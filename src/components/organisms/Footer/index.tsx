@@ -10,7 +10,10 @@ export default function Footer() {
           <img src="./icons/logo-footer.svg" alt="logo" />
 
           <Contacts>
-            г. Москва, Цветной б-р, 40 <br />
+            <a href="https://maps.app.goo.gl/R7JAnxpjDk7rU87q8">
+              г. Москва, Цветной б-р, 40
+            </a>
+            <br />
             <a href="tel:+74957712111">+7 495 771 21 11</a> <br />
             <a href="mailto:info@skan.ru">info@skan.ru</a> <br />
             <br />

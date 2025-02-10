@@ -1,6 +1,9 @@
 import Layout from '@/components/organisms/Layout';
 import AuthPage from '@/pages/Auth';
+import ErrorPage from '@/pages/Error';
+import FaqPage from '@/pages/Faq';
 import MainPage from '@/pages/Main';
+import TarrifsPage from '@/pages/Tariffs';
 import { RouterPaths } from '@/router/types';
 import { Flex, Spin } from 'antd';
 import { lazy, Suspense } from 'react';
@@ -24,6 +27,18 @@ const router = createBrowserRouter([
       {
         path: RouterPaths.SEARCH,
         element: <LazySearchPage />,
+      },
+      {
+        path: RouterPaths.TARIFFS,
+        element: <TarrifsPage />,
+      },
+      {
+        path: RouterPaths.FAQ,
+        element: <FaqPage />,
+      },
+      {
+        path: '*',
+        element: <ErrorPage />,
       },
     ],
   },

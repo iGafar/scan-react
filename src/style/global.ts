@@ -19,6 +19,13 @@ export const Global = createGlobalStyle`
 
 	main {
 		flex: 1;
+		gap: 70px;
+		display: flex;
+		flex-direction: column;
+	}
+
+	.ant-card {
+		box-shadow: 0px 0px 16px 0px rgba(0, 0, 0, 0.2);
 	}
 `;
 

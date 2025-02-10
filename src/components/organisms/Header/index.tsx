@@ -1,26 +1,46 @@
-import CustomButton from '@/components/atoms/CustomButton';
-import { Register } from '@/components/organisms/Header/styles';
+import { NavLinkStyle, Register } from '@/components/organisms/Header/styles';
 import { RouterPaths } from '@/router/types';
 import { Container } from '@/style/global';
-import { Divider, Flex } from 'antd';
-import { NavLink } from 'react-router-dom';
+import { Button, Divider, Flex } from 'antd';
+import { Link, NavLink } from 'react-router-dom';
 
-const navItems = ['Главная', 'Тарифы', 'FAQ'];
+const navItems = [
+  {
+    pageName: 'Главная',
+    path: RouterPaths.MAIN,
+  },
+  {
+    pageName: 'Тарифы',
+    path: RouterPaths.TARIFFS,
+  },
+  {
+    pageName: 'FAQ',
+    path: RouterPaths.FAQ,
+  },
+];
 
 export default function Header() {
   return (
     <header>
       <Container>
         <Flex justify="space-between" align="center">
-          <img src="./icons/logo-header.svg" />
+          <Link to={RouterPaths.MAIN}>
+            <img src="./icons/logo-header.svg" />
+          </Link>
 
-          <Flex gap={50}>
-            {navItems.map(item => (
-              <a key={item} href="#">
-                {item}
-              </a>
-            ))}
-          </Flex>
+          <nav>
+            <Flex gap={50}>
+              {navItems.map(item => (
+                <NavLinkStyle
+                  to={item.path}
+                  key={item.pageName}
+                  className={({ isActive }) => (isActive ? 'active' : '')}
+                >
+                  {item.pageName}
+                </NavLinkStyle>
+              ))}
+            </Flex>
+          </nav>
 
           <Flex align="center" gap={20}>
             <Register href="#">Зарегистрироваться</Register>
@@ -33,11 +53,11 @@ export default function Header() {
                 margin: 0,
               }}
             />
-            <NavLink to={RouterPaths.AUTH}>
-              <CustomButton type="secondary" size="small">
+            <Link to={RouterPaths.AUTH}>
+              <Button type="primary" size="small">
                 Войти
-              </CustomButton>
-            </NavLink>
+              </Button>
+            </Link>
           </Flex>
         </Flex>
       </Container>

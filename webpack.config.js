@@ -37,7 +37,6 @@ module.exports = {
     new HtmlWebpackPlugin({
       title: 'Scan',
       template: './index.html',
-      favicon: './icon/favicon.ico',
     }),
     new MiniCssExtractPlugin({ filename: 'style.css' }),
   ],
