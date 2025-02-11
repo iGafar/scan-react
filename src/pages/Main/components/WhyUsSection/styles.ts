@@ -18,6 +18,8 @@ export const CarouselWrapper = styled.div`
 
   .slick-track {
     padding: 20px 0;
+    display: flex;
+    align-items: center;
   }
 
   .slick-arrow {
@@ -34,7 +36,8 @@ export const CarouselWrapper = styled.div`
     inset-inline-start: -25px;
   }
 
-  .slick-next {
+  .slick-next,
+  .slick-prev {
     inset-inline-end: -25px;
 
     &::after {

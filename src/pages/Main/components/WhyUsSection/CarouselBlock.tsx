@@ -1,4 +1,4 @@
-import CardMainCarousel from '@/components/molecules/Cards/CardMainCarousel';
+import CardMainCarousel from '@/components/molecules/Card/CardMainCarousel';
 import useResponsive from '@/hooks/useResponsive';
 import { CarouselWrapper } from '@/pages/Main/components/WhyUsSection/styles';
 import { Carousel } from 'antd';
@@ -42,7 +42,7 @@ export default function CarouselBlock() {
         }
       >
         {carouselItems.map(item => (
-          <CardMainCarousel {...item} />
+          <CardMainCarousel key={item.id} {...item} />
         ))}
       </Carousel>
     </CarouselWrapper>

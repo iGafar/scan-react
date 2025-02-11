@@ -1,6 +1,7 @@
 import Text from '@/components/atoms/Text';
-import { CardWrapper } from '@/components/molecules/Cards/CardMainCarousel/styles';
 import { Card } from 'antd';
+
+import { CardWrapper } from './styles';
 
 interface ICardMainCarouselProps {
   img: string;
@@ -12,7 +13,7 @@ export default function CardMainCarousel(props: ICardMainCarouselProps) {
 
   return (
     <CardWrapper>
-      <Card>
+      <Card size="small">
         <img src={img} alt="slide image" />
         <Text size="medium">{text}</Text>
       </Card>

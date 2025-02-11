@@ -12,7 +12,8 @@ export default function App() {
     },
     components: {
       Button: {
-        fontSize: 22,
+        fontSize: 16,
+        contentFontSizeLG: 22,
         contentFontSizeSM: 14,
         defaultColor: '#ffffff',
         defaultHoverColor: '#ffffff',
@@ -27,15 +28,18 @@ export default function App() {
         colorPrimary: '#7ce3e1',
         colorPrimaryHover: '#5ed1c6',
         colorPrimaryActive: '#7ce3e1',
-        controlHeight: 60,
+        controlHeight: 46,
         controlHeightSM: 26,
-        paddingContentHorizontal: 40,
+        controlHeightLG: 60,
+        paddingContentVerticalLG: 40,
         paddingContentHorizontalSM: 10,
         borderRadius: 5,
       },
       Card: {
         borderRadius: 10,
-        padding: 25,
+        headerPadding: 30,
+        bodyPaddingSM: 20,
+        padding: 40,
       },
     },
   };

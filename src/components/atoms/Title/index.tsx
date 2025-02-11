@@ -1,5 +1,5 @@
 import { TitleStyle } from '@/components/atoms/Title/styles';
-import { JSX } from 'react';
+import { CSSProperties, JSX } from 'react';
 
 interface TitleProps {
   level: 1 | 2 | 3 | 4;
@@ -7,10 +7,11 @@ interface TitleProps {
   className?: string;
   maxWidth?: number;
   mb?: number;
+  style?: CSSProperties;
 }
 
 export default function Title(props: TitleProps) {
-  const { level, children, className, maxWidth, mb } = props;
+  const { level, children, className, maxWidth, mb, style } = props;
 
   return (
     <TitleStyle
@@ -19,6 +20,7 @@ export default function Title(props: TitleProps) {
       $level={level}
       $maxWidth={maxWidth}
       $mb={mb}
+      style={style}
     >
       {children}
     </TitleStyle>

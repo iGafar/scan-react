@@ -24,7 +24,7 @@ export default function HeroSection() {
             </Text>
 
             <NavLink to={RouterPaths.SEARCH}>
-              <Button>Запросить данные</Button>
+              <Button size="large">Запросить данные</Button>
             </NavLink>
           </div>
 

@@ -8,24 +8,24 @@ export const TitleStyle = styled.h1<{
   font-size: ${({ $level }) => {
     switch ($level) {
       case 1:
-        return '60px';
+        return 60;
       case 2:
-        return '43px';
+        return 45;
       case 3:
-        return '1.75rem';
+        return 40;
       case 4:
-        return '1.5rem';
+        return 30;
       case 5:
-        return '1.25rem';
+        return 26;
       case 6:
         return '1rem';
-      default:
-        return '1rem';
     }
-  }};
+  }}px;
   ${({ $maxWidth }) => $maxWidth && `max-width: ${$maxWidth}px`};
   ${({ $mb }) => $mb && `margin-bottom: ${$mb}px`};
-  font-weight: 900;
-  text-transform: uppercase;
+  ${({ $level }) =>
+    $level < 4 &&
+    'font-family: "Inter", sans-serif; text-transform: uppercase;'}
+  font-weight: ${({ $level }) => ($level > 3 ? 500 : 900)};
   color: #333;
 `;
