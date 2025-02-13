@@ -9,6 +9,7 @@ export default function App() {
       fontFamily: 'Inter',
       fontSize: 14,
       borderRadius: 5,
+      colorPrimary: '#5970ff',
     },
     components: {
       Button: {
@@ -16,11 +17,10 @@ export default function App() {
         contentFontSizeLG: 22,
         contentFontSizeSM: 14,
         defaultColor: '#ffffff',
+        colorLink: '#5970FF',
+        colorLinkHover: '#3a5bcf',
         defaultHoverColor: '#ffffff',
         defaultActiveColor: '#ffffff',
-        defaultBorderColor: '#5970ff',
-        defaultHoverBorderColor: '#5970ff',
-        defaultActiveBorderColor: '#5970ff',
         defaultBg: '#5970ff',
         defaultHoverBg: '#3a5bcf',
         defaultActiveBg: '#5970ff',

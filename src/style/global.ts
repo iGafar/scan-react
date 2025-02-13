@@ -25,13 +25,17 @@ export const Global = createGlobalStyle`
 		flex-direction: column;
 	}
 
-	.ant-card {
+	.ant-card, .ant-form {
 		box-shadow: 0px 0px 16px 0px rgba(0, 0, 0, 0.2);
+	}
+
+	.ant-form {
+		border-radius: 10px;
 	}
 `;
 
 export const Container = styled.div`
-  max-width: 1340px;
+  max-width: 1360px;
   margin: 0 auto;
-  padding: 0 10px;
+  padding: 0 20px;
 `;

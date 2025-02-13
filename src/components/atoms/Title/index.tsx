@@ -1,4 +1,5 @@
 import { TitleStyle } from '@/components/atoms/Title/styles';
+import useResponsive from '@/hooks/useResponsive';
 import { CSSProperties, JSX } from 'react';
 
 interface TitleProps {
@@ -12,6 +13,7 @@ interface TitleProps {
 
 export default function Title(props: TitleProps) {
   const { level, children, className, maxWidth, mb, style } = props;
+  const { isTablet } = useResponsive();
 
   return (
     <TitleStyle
@@ -21,6 +23,7 @@ export default function Title(props: TitleProps) {
       $maxWidth={maxWidth}
       $mb={mb}
       style={style}
+      $isTablet={isTablet}
     >
       {children}
     </TitleStyle>

@@ -4,15 +4,16 @@ export const TitleStyle = styled.h1<{
   $level: number;
   $maxWidth: number | undefined;
   $mb: number | undefined;
+  $isTablet: boolean;
 }>`
-  font-size: ${({ $level }) => {
+  font-size: ${({ $level, $isTablet }) => {
     switch ($level) {
       case 1:
         return 60;
       case 2:
         return 45;
       case 3:
-        return 40;
+        return $isTablet ? 40 : 22;
       case 4:
         return 30;
       case 5:
