@@ -24,6 +24,7 @@ export default function App() {
         defaultBg: '#5970ff',
         defaultHoverBg: '#3a5bcf',
         defaultActiveBg: '#5970ff',
+        defaultHoverBorderColor: '#5970ff',
         primaryColor: '#000',
         colorPrimary: '#7ce3e1',
         colorPrimaryHover: '#5ed1c6',
