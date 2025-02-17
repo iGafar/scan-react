@@ -4,6 +4,7 @@ import ErrorPage from '@/pages/Error';
 import FaqPage from '@/pages/Faq';
 import MainPage from '@/pages/Main';
 import TarrifsPage from '@/pages/Tariffs';
+import RedirectRoute from '@/router/RedirectRoute';
 import { RouterPaths } from '@/router/types';
 import { Flex, Spin } from 'antd';
 import { lazy, Suspense } from 'react';
@@ -22,11 +23,19 @@ const router = createBrowserRouter([
       },
       {
         path: RouterPaths.AUTH,
-        element: <AuthPage />,
+        element: (
+          <RedirectRoute redirectIfAuth>
+            <AuthPage />
+          </RedirectRoute>
+        ),
       },
       {
         path: RouterPaths.SEARCH,
-        element: <LazySearchPage />,
+        element: (
+          <RedirectRoute redirectIfAuth={false}>
+            <LazySearchPage />,
+          </RedirectRoute>
+        ),
       },
       {
         path: RouterPaths.TARIFFS,

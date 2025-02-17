@@ -1,11 +1,14 @@
 import Text from '@/components/atoms/Text';
 import Title from '@/components/atoms/Title';
+import { useAuth } from '@/hooks/useAuth';
 import { RouterPaths } from '@/router/types';
 import { Container } from '@/style/global';
 import { Button, Flex, Input } from 'antd';
 import { NavLink } from 'react-router-dom';
 
 export default function HeroSection() {
+  const { isAuth } = useAuth();
+
   return (
     <section>
       <Container>
@@ -23,9 +26,11 @@ export default function HeroSection() {
               электронную почту.
             </Text>
 
-            <NavLink to={RouterPaths.SEARCH}>
-              <Button size="large">Запросить данные</Button>
-            </NavLink>
+            {isAuth && (
+              <NavLink to={RouterPaths.SEARCH}>
+                <Button size="large">Запросить данные</Button>
+              </NavLink>
+            )}
           </div>
 
           <img

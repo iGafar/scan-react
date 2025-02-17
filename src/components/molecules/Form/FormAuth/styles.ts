@@ -14,6 +14,10 @@ export const FormStyle = styled(Form)`
     }
   }
 
+  .ant-form-item-required::before {
+    display: none !important;
+  }
+
   @media (max-width: 768px) {
     max-width: none;
   }
