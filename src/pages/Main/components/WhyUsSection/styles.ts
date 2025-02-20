@@ -22,26 +22,23 @@ export const CarouselWrapper = styled.div`
     align-items: center;
   }
 
-  .slick-arrow {
+  .slick-prev,
+  .slick-next {
     width: 40px;
     height: 40px;
+    inset-inline-end: -25px;
 
     img {
       width: 100%;
+    }
+
+    &::after {
+      display: none;
     }
   }
 
   .slick-prev {
     transform: rotate(180deg) translateY(20px);
     inset-inline-start: -25px;
-  }
-
-  .slick-next,
-  .slick-prev {
-    inset-inline-end: -25px;
-
-    &::after {
-      display: none;
-    }
   }
 `;

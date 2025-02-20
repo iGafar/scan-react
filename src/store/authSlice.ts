@@ -3,15 +3,17 @@ import { createSlice } from '@reduxjs/toolkit';
 
 export const enum UserEnum {
   USER_TOKEN = 'userToken',
-  USER_INFO = 'userInfo',
+  TOKEN_EXPIRE = 'tokenExpire',
 }
 
 interface InitialStateType {
   userToken: string | null;
+  expire: string | null;
 }
 
 const initialState: InitialStateType = {
   userToken: localStorage.getItem(UserEnum.USER_TOKEN),
+  expire: localStorage.getItem(UserEnum.TOKEN_EXPIRE),
 };
 
 const authSlice = createSlice({
@@ -20,6 +22,7 @@ const authSlice = createSlice({
   reducers: {
     setUserLogout: state => {
       localStorage.removeItem(UserEnum.USER_TOKEN);
+      localStorage.removeItem(UserEnum.TOKEN_EXPIRE);
 
       state.userToken = null;
     },
@@ -28,7 +31,10 @@ const authSlice = createSlice({
         UserEnum.USER_TOKEN,
         JSON.stringify(payload.accessToken),
       );
+      localStorage.setItem(UserEnum.TOKEN_EXPIRE, payload.expire);
+
       state.userToken = payload.accessToken;
+      state.expire = payload.expire;
     },
   },
 });

@@ -34,12 +34,10 @@ const baseQueryWithReauth: BaseQueryFn<
   FetchBaseQueryError
 > = async (args, api, extraOptions) => {
   const result = await baseQuery(args, api, extraOptions);
+  const state = api.getState() as RootState;
+  const expire = state.auth.expire as string;
 
-  if (
-    result?.error &&
-    'originalStatus' in result.error &&
-    result.error.originalStatus === 401
-  ) {
+  if (result?.error?.status === 401 && new Date(expire) < new Date()) {
     api.dispatch(setUserLogout());
   } else if (result?.error && result?.error.status === 403) {
     toast.error('Доступ запрещен!');
