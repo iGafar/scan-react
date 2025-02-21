@@ -5,7 +5,7 @@ const CONTROLLER_URL = 'documents';
 
 export const documentsController = commonApi.injectEndpoints({
   endpoints: builder => ({
-    getDocuments: builder.mutation<IDocumentItem[], string[]>({
+    getDocuments: builder.mutation<IDocumentItem[], { ids: string[] }>({
       query: body => ({
         url: CONTROLLER_URL,
         method: 'POST',
@@ -14,3 +14,5 @@ export const documentsController = commonApi.injectEndpoints({
     }),
   }),
 });
+
+export const { useGetDocumentsMutation } = documentsController;

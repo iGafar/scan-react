@@ -11,6 +11,7 @@ import { lazy, Suspense } from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 const LazySearchPage = lazy(() => import('@/pages/Search'));
+const LazyResultsPage = lazy(() => import('@/pages/Results'));
 
 const router = createBrowserRouter([
   {
@@ -34,6 +35,14 @@ const router = createBrowserRouter([
         element: (
           <RedirectRoute redirectIfAuth={false}>
             <LazySearchPage />,
+          </RedirectRoute>
+        ),
+      },
+      {
+        path: RouterPaths.RESULTS,
+        element: (
+          <RedirectRoute redirectIfAuth={false}>
+            <LazyResultsPage />
           </RedirectRoute>
         ),
       },

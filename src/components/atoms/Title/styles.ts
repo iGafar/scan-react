@@ -25,8 +25,8 @@ export const TitleStyle = styled.h1<{
   ${({ $maxWidth }) => $maxWidth && `max-width: ${$maxWidth}px`};
   ${({ $mb }) => $mb && `margin-bottom: ${$mb}px`};
   ${({ $level }) =>
-    $level < 4 &&
-    'font-family: "Inter", sans-serif; text-transform: uppercase;'}
-  font-weight: ${({ $level }) => ($level > 3 ? 500 : 900)};
+    $level < 5 &&
+    'font-family: "Ferry", sans-serif; text-transform: uppercase;'}
+  font-weight: ${({ $level }) => ($level > 4 ? 500 : 900)};
   color: #333;
 `;

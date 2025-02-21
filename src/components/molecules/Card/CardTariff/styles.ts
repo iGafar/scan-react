@@ -23,3 +23,8 @@ export const CardStyle = styled(Card)<{ $backColor: string }>`
     height: 81px;
   }
 `;
+
+export const CardTitle = styled.h4`
+  font-size: 30px;
+  font-weight: 500;
+`;

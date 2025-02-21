@@ -9,13 +9,27 @@ interface IText {
   mb?: number;
   size?: TextSizeType;
   style?: CSSProperties;
+  textCenter?: boolean;
 }
 
 export default function Text(props: IText) {
-  const { maxWidth, children, mb, size = 'large', style } = props;
+  const {
+    maxWidth,
+    children,
+    mb,
+    size = 'large',
+    style,
+    textCenter = false,
+  } = props;
 
   return (
-    <TextStyle $maxWidth={maxWidth} $mb={mb} $size={size} style={style}>
+    <TextStyle
+      $maxWidth={maxWidth}
+      $mb={mb}
+      $size={size}
+      style={style}
+      $textCenter={textCenter}
+    >
       {children}
     </TextStyle>
   );

@@ -3,7 +3,7 @@ import useResponsive from '@/hooks/useResponsive';
 import { CSSProperties, JSX } from 'react';
 
 interface TitleProps {
-  level: 1 | 2 | 3 | 4;
+  level: 1 | 2 | 3 | 4 | 5 | 6;
   children: React.ReactNode;
   className?: string;
   maxWidth?: number;

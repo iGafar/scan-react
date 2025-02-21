@@ -1,37 +1,42 @@
 import { TonalityType } from '@/api/controllers/objectsearch-controller/objectsearch-controller.types';
 
-export const checkboxesData = [
+interface IOptions<V, L> {
+  value: V;
+  label: L;
+}
+
+export const checkboxOptions: IOptions<string, string>[] = [
   {
-    id: 1,
     label: 'Признак максимальной полноты',
+    value: 'maxFullness',
   },
   {
-    id: 2,
     label: 'Упоминания в бизнес-контексте',
+    value: 'inBusinessNews',
   },
   {
-    id: 3,
     label: 'Главная роль в публикации',
+    value: 'onlyMainRole ',
   },
   {
-    id: 4,
     label: 'Публикации только с риск-факторами',
+    value: 'onlyWithRiskFactors',
   },
   {
-    id: 5,
     label: 'Включать технические новости рынков',
+    value: 'isTechNews',
   },
   {
-    id: 6,
     label: 'Включать анонсы и календари',
+    value: 'isAnnouncement',
   },
   {
-    id: 7,
     label: 'Включать сводки новостей',
+    value: 'isDigest',
   },
 ];
 
-export const tonalityOptions: { label: string; value: TonalityType }[] = [
+export const tonalityOptions: IOptions<TonalityType, string>[] = [
   { value: 'any', label: 'Любой' },
   { value: 'negative', label: 'Негативный' },
   { value: 'positive', label: 'Позитивный' },

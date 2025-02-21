@@ -32,6 +32,45 @@ export const Global = createGlobalStyle`
 	.ant-form {
 		border-radius: 10px;
 	}
+
+	.ant-checkbox-inner{
+		border: 1px solid var(--black) !important;
+		opacity: 0.4;
+	}
+
+	.ant-checkbox-label {
+		opacity: 0.4;
+	}
+
+	.ant-checkbox-checked .ant-checkbox-inner, .ant-checkbox-checked+.ant-checkbox-label {
+		opacity: 1;
+	}
+
+	.slick-track {
+    padding: 20px 0 !important;
+    display: flex !important;
+    align-items: center !important;
+  }
+
+  .slick-prev,
+  .slick-next {
+    width: 40px !important;
+    height: 40px !important;
+    inset-inline-end: -25px !important;
+
+    img {
+      width: 100% !important;
+    }
+
+    &::after {
+      display: none !important;
+    }
+  }
+
+  .slick-prev {
+    transform: rotate(180deg) translateY(20px) !important;
+    inset-inline-start: -25px !important;
+  }
 `;
 
 export const Container = styled.div`

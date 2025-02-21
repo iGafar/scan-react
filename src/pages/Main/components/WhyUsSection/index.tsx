@@ -1,5 +1,5 @@
 import Title from '@/components/atoms/Title';
-import CarouselBlock from '@/pages/Main/components/WhyUsSection/CarouselBlock';
+import CarouselWhyWe from '@/components/molecules/Carousel/CarouselWhyWe';
 import { WhyUsSectionStyle } from '@/pages/Main/components/WhyUsSection/styles';
 import { Container } from '@/style/global';
 
@@ -11,7 +11,7 @@ export default function WhyUsSection() {
           Почему именно мы
         </Title>
 
-        <CarouselBlock />
+        <CarouselWhyWe />
       </Container>
     </WhyUsSectionStyle>
   );

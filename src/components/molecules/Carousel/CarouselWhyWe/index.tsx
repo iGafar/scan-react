@@ -1,6 +1,6 @@
 import CardMainCarousel from '@/components/molecules/Card/CardMainCarousel';
+import { CarouselWrapper } from '@/components/molecules/Carousel/CarouselWhyWe/styles';
 import useResponsive from '@/hooks/useResponsive';
-import { CarouselWrapper } from '@/pages/Main/components/WhyUsSection/styles';
 import { Carousel } from 'antd';
 
 const carouselItems = [
@@ -21,7 +21,7 @@ const carouselItems = [
   },
 ];
 
-export default function CarouselBlock() {
+export default function CarouselWhyWe() {
   const { isDesktop, isPreMobile } = useResponsive();
 
   return (

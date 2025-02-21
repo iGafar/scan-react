@@ -17,6 +17,17 @@ export const FormStyle = styled(Form)`
     font-size: 20px;
   }
 
+  .ant-form-item-required {
+    &::before {
+      display: none !important;
+    }
+
+    &::after {
+      content: '*' !important;
+      visibility: visible !important;
+    }
+  }
+
   @media (max-width: 1200px) {
     max-width: 500px;
   }
@@ -30,6 +41,12 @@ export const FormStyle = styled(Form)`
   @media (max-width: 768px) {
     .ant-picker,
     .ant-btn {
+      width: 100%;
+    }
+  }
+
+  @media (max-width: 576px) {
+    .ant-form-item {
       width: 100%;
     }
   }

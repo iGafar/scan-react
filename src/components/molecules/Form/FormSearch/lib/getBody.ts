@@ -6,18 +6,18 @@ export function getBody(params: IFormSearchValues): IObjectiveSearchBody {
     startDate,
     endDate,
     inn,
+    tonality,
+    limit,
     maxFullness = false,
     inBusinessNews = false,
     onlyMainRole = false,
-    tonality,
     onlyWithRiskFactors = false,
     excludeTechNews = false,
     excludeAnnouncements = false,
     excludeDigests = false,
-    limit,
   } = params;
 
-  return {
+  const body: IObjectiveSearchBody = {
     attributeFilters: {
       excludeAnnouncements,
       excludeDigests,
@@ -72,4 +72,8 @@ export function getBody(params: IFormSearchValues): IObjectiveSearchBody {
     sortDirectionType: 'desc',
     sortType: 'issueDate',
   };
+
+  localStorage.setItem('histogramsBody', JSON.stringify(body));
+
+  return body;
 }

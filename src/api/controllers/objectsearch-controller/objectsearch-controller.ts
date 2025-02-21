@@ -1,6 +1,7 @@
 import { commonApi } from '@/api/commom.api';
 import {
   IGetIdsData,
+  IHistogram,
   IHistogramData,
   IObjectiveSearchBody,
 } from '@/api/controllers/objectsearch-controller/objectsearch-controller.types';
@@ -16,12 +17,13 @@ export const objectsearchController = commonApi.injectEndpoints({
         body,
       }),
     }),
-    getHistograms: builder.mutation<IHistogramData, IObjectiveSearchBody>({
+    getHistograms: builder.mutation<IHistogram[], IObjectiveSearchBody>({
       query: body => ({
         url: `${CONTROLLER_URL}/histograms`,
         method: 'POST',
         body,
       }),
+      transformResponse: (res: IHistogramData) => res.data,
     }),
   }),
 });

@@ -1,6 +1,9 @@
 import Text from '@/components/atoms/Text';
 import Title from '@/components/atoms/Title';
-import { CardStyle } from '@/components/molecules/Card/CardTariff/styles';
+import {
+  CardStyle,
+  CardTitle,
+} from '@/components/molecules/Card/CardTariff/styles';
 import { OldPrice } from '@/pages/Main/components/OurTariffsSection/styles';
 import { Button, Flex } from 'antd';
 
@@ -33,7 +36,7 @@ export default function CardTariff(props: ICardTariffProps) {
       title={
         <Flex justify="space-between">
           <div>
-            <Title level={4}>{title}</Title>
+            <CardTitle>{title}</CardTitle>
             <Text size="medium" style={{ fontWeight: 400, whiteSpace: 'wrap' }}>
               {subtitle}
             </Text>

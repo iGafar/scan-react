@@ -41,6 +41,20 @@ export default function AntdThemeProvider({ children }: IProviderProps) {
         bodyPaddingSM: 20,
         padding: 40,
       },
+      Checkbox: {
+        borderRadiusSM: 0,
+        colorPrimary: 'rgb(255,255,255)',
+        colorBorder: 'rgb(0,0,0)',
+        colorPrimaryHover: 'rgba(77,202,43,0.1)',
+        colorPrimaryBorder: 'rgb(0,0,0)',
+        colorBgContainer: 'rgb(255,255,255)',
+        colorBgContainerDisabled: 'rgba(255,255,255,0.04)',
+        colorText: 'rgb(0,0,0)',
+        colorTextDisabled: 'rgba(0,0,0,0.4)',
+        colorWhite: 'rgb(77,202,43)',
+        controlInteractiveSize: 20,
+        fontSize: 18,
+      },
     },
   };
 
