@@ -46,6 +46,10 @@ export const Global = createGlobalStyle`
 		opacity: 1;
 	}
 
+	.ant-drawer-content-wrapper {
+		height: 100vh !important;
+	}
+
 	.slick-track {
     padding: 20px 0 !important;
     display: flex !important;

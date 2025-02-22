@@ -12,15 +12,13 @@ import { useEffect, useState } from 'react';
 
 export default function CarouselGeneralSummary() {
   const [getHistograms, { data, isLoading, isError }] =
-    useGetHistogramsMutation({
-      fixedCacheKey: 'histograms',
-    });
+    useGetHistogramsMutation({ fixedCacheKey: 'histograms' });
 
   const [documents, setDocuments] = useState<IDocument[]>([]);
 
   useEffect(() => {
     if (!data)
-      getHistograms(JSON.parse(localStorage.getItem('histogramsBody') || ''));
+      getHistograms(JSON.parse(sessionStorage.getItem('histogramsBody') || ''));
   }, []);
 
   useEffect(() => {
@@ -57,6 +55,18 @@ export default function CarouselGeneralSummary() {
       />
     );
 
+  if (!documents)
+    return (
+      <Alert
+        type="info"
+        action={
+          <Flex justify="center">
+            <span>Данных нет</span>
+          </Flex>
+        }
+      />
+    );
+
   return (
     <CarouselWrapper>
       <TitlesBlock vertical gap={26}>
@@ -67,7 +77,7 @@ export default function CarouselGeneralSummary() {
       <CarouselStyle
         arrows
         draggable
-        slidesToShow={8}
+        slidesToShow={8 < documents.length ? 8 : documents.length}
         infinite={false}
         prevArrow={
           <button>

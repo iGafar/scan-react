@@ -13,7 +13,8 @@ export default function DocumentsSection() {
   const [getDocuments, { data: documents }] = useGetDocumentsMutation();
 
   useEffect(() => {
-    if (!ids) getIds(JSON.parse(localStorage.getItem('histogramsBody') || ''));
+    if (!ids)
+      getIds(JSON.parse(sessionStorage.getItem('histogramsBody') || ''));
   }, []);
 
   useEffect(() => {
@@ -23,8 +24,6 @@ export default function DocumentsSection() {
       getDocuments({ ids: newIds });
     }
   }, [isSuccess]);
-
-  console.log(documents ? documents[0].ok : null);
 
   // if (isLoading)
   //   return (

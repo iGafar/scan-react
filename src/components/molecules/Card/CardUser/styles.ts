@@ -27,6 +27,15 @@ export const CardUserWrapper = styled(Flex)`
     font-size: 10px;
     width: 100%;
   }
+
+  @media (max-width: 450px) {
+    p {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+			text-align: start;
+    }
+  }
 `;
 
 export const UserCardLoader = styled.picture`

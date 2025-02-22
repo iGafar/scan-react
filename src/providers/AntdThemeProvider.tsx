@@ -55,6 +55,10 @@ export default function AntdThemeProvider({ children }: IProviderProps) {
         controlInteractiveSize: 20,
         fontSize: 18,
       },
+      Drawer: {
+        colorBgElevated: '#029491',
+        fontSize: 16,
+      },
     },
   };
 

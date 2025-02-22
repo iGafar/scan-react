@@ -54,18 +54,14 @@ export default function FormSearch() {
   const [
     getHistograms,
     { isSuccess: isGetHistogramsSucces, isLoading: isGetHistogramsLoading },
-  ] = useGetHistogramsMutation({
-    fixedCacheKey: 'histograms',
-  });
+  ] = useGetHistogramsMutation({ fixedCacheKey: 'histograms' });
   const [getIds, { isSuccess: isGetIdsSuccess, isLoading: isGetIdsLoading }] =
-    useGetIdsMutation({
-      fixedCacheKey: 'ids',
-    });
+    useGetIdsMutation({ fixedCacheKey: 'ids' });
 
   const values = Form.useWatch([], form);
 
   useEffect(() => {
-    localStorage.removeItem('histogramsBody');
+    sessionStorage.removeItem('histogramsBody');
   }, []);
 
   useEffect(() => {
@@ -94,9 +90,7 @@ export default function FormSearch() {
       layout="vertical"
       onFinish={onFinish}
       form={form}
-      initialValues={{
-        tonality: 'any',
-      }}
+      initialValues={{ tonality: 'any' }}
     >
       <Flex gap={10} justify="space-between" vertical={!isLargeDesktop}>
         <div>

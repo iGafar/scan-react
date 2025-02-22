@@ -7,7 +7,7 @@ export default function Footer() {
     <FooterStyle>
       <Container>
         <Flex justify="space-between" align="center">
-          <img src="./icons/logo-footer.svg" alt="logo" />
+          <img src="./icons/logo-wgite.svg" alt="logo" />
 
           <Contacts>
             <a href="https://maps.app.goo.gl/R7JAnxpjDk7rU87q8">
