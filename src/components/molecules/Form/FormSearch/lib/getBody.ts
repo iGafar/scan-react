@@ -18,17 +18,10 @@ export function getBody(params: IFormSearchValues): IObjectiveSearchBody {
   } = params;
 
   const body: IObjectiveSearchBody = {
-    attributeFilters: {
-      excludeAnnouncements,
-      excludeDigests,
-      excludeTechNews,
-    },
+    attributeFilters: { excludeAnnouncements, excludeDigests, excludeTechNews },
     histogramTypes: ['totalDocuments', 'riskFactors'],
     intervalType: 'month',
-    issueDateInterval: {
-      endDate,
-      startDate,
-    },
+    issueDateInterval: { endDate, startDate },
     limit,
     searchArea: {
       excludedSourceGroups: [],
@@ -40,11 +33,7 @@ export function getBody(params: IFormSearchValues): IObjectiveSearchBody {
       targetSearchEntitiesContext: {
         onlyMainRole,
         onlyWithRiskFactors,
-        riskFactors: {
-          and: [],
-          not: [],
-          or: [],
-        },
+        riskFactors: { and: [], not: [], or: [] },
         targetSearchEntities: [
           {
             entityId: null,
@@ -55,25 +44,17 @@ export function getBody(params: IFormSearchValues): IObjectiveSearchBody {
             type: 'company',
           },
         ],
-        themes: {
-          and: [],
-          not: [],
-          or: [],
-        },
+        themes: { and: [], not: [], or: [] },
         tonality,
       },
-      themesFilter: {
-        and: [],
-        not: [],
-        or: [],
-      },
+      themesFilter: { and: [], not: [], or: [] },
     },
     similarMode: 'duplicates',
     sortDirectionType: 'desc',
     sortType: 'issueDate',
   };
 
-  localStorage.setItem('histogramsBody', JSON.stringify(body));
+  sessionStorage.setItem('histogramsBody', JSON.stringify(body));
 
   return body;
 }

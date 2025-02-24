@@ -16,7 +16,7 @@ export default function CardUser() {
       ) : (
         <>
           <p>
-            <span> Использовано компаний</span> {data?.usedCompanyCount}
+            <span>Использовано компаний</span> {data?.usedCompanyCount}
           </p>
           <p>
             <span>Лимит по компаниям </span>
