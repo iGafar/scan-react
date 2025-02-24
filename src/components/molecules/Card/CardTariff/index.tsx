@@ -3,7 +3,10 @@ import Title from '@/components/atoms/Title';
 import {
   CardStyle,
   CardTitle,
+  TariffsList,
 } from '@/components/molecules/Card/CardTariff/styles';
+import { useAuth } from '@/hooks/useAuth';
+import useResponsive from '@/hooks/useResponsive';
 import { OldPrice } from '@/pages/Main/components/OurTariffsSection/styles';
 import { Button, Flex } from 'antd';
 
@@ -30,9 +33,13 @@ export default function CardTariff(props: ICardTariffProps) {
     tariffOptions,
   } = props;
 
+  const { isTablet } = useResponsive();
+  const { isAuth } = useAuth();
+
   return (
     <CardStyle
       $backColor={backColor}
+      $isActiveTariff={isAuth && title === 'Beginner'}
       title={
         <Flex justify="space-between">
           <div>
@@ -48,11 +55,11 @@ export default function CardTariff(props: ICardTariffProps) {
       }
     >
       <Flex vertical style={{ height: '100%' }}>
-        <Title level={4}>
+        <Title level={4} style={{ fontWeight: 500 }}>
           {price.toLocaleString('ru')} ₽
           <OldPrice>{oldPrice.toLocaleString('ru')} ₽</OldPrice>
         </Title>
-        <Text size="medium" mb={59}>
+        <Text size="medium" mb={isTablet ? 59 : 35}>
           {description}
         </Text>
 
@@ -60,13 +67,13 @@ export default function CardTariff(props: ICardTariffProps) {
           В тариф входит:
         </Text>
 
-        <ul style={{ marginBottom: 55 }}>
+        <TariffsList>
           {tariffOptions.map(option => (
             <li key={option}>
               <img src="./icons/check.svg" alt="check" /> {option}
             </li>
           ))}
-        </ul>
+        </TariffsList>
         <Button size="large">Подробнее</Button>
       </Flex>
     </CardStyle>

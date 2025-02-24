@@ -1,7 +1,10 @@
 import { Card } from 'antd';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
-export const CardStyle = styled(Card)<{ $backColor: string }>`
+export const CardStyle = styled(Card)<{
+  $backColor: string;
+  $isActiveTariff: boolean;
+}>`
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -11,12 +14,22 @@ export const CardStyle = styled(Card)<{ $backColor: string }>`
 
     h4,
     p {
-      ${({ $backColor }) => $backColor === '#000000' && 'color: var(--white);'}
+      ${({ $backColor }) =>
+        $backColor === '#000000' &&
+        css`
+          color: var(--white);
+        `}
     }
   }
 
   .ant-card-body {
     flex: 1;
+
+    ${({ $isActiveTariff }) =>
+      $isActiveTariff &&
+      css`
+        border: 2px solid var(--gold);
+      `}
   }
 
   picture {
@@ -27,4 +40,12 @@ export const CardStyle = styled(Card)<{ $backColor: string }>`
 export const CardTitle = styled.h4`
   font-size: 30px;
   font-weight: 500;
+`;
+
+export const TariffsList = styled.ul`
+  margin-bottom: 55px;
+
+  @media (max-width: 768px) {
+    margin-bottom: 35px;
+  }
 `;

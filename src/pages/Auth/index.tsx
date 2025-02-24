@@ -1,7 +1,7 @@
 import Title from '@/components/atoms/Title';
 import FormAuth from '@/components/molecules/Form/FormAuth';
 import useResponsive from '@/hooks/useResponsive';
-import { ImageWrapper } from '@/pages/Auth/styles';
+import { ImageWrapper, SectionStyle } from '@/pages/Auth/styles';
 import { Container } from '@/style/global';
 import { Flex } from 'antd';
 
@@ -10,11 +10,11 @@ export default function AuthPage() {
 
   return (
     <main>
-      <section>
+      <SectionStyle>
         <Container>
           <Flex justify="space-between" gap={10} vertical={!isTablet}>
             <Flex vertical justify="space-between">
-              <Title level={3} mb={!isTablet ? 45 : 0} maxWidth={700}>
+              <Title level={3} mb={!isTablet ? 126 : 0} maxWidth={700}>
                 Для оформления подписки на тариф, необходимо авторизоваться.
               </Title>
 
@@ -34,7 +34,7 @@ export default function AuthPage() {
             )}
           </Flex>
         </Container>
-      </section>
+      </SectionStyle>
     </main>
   );
 }

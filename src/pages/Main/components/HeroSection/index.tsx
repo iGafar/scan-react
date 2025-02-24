@@ -1,43 +1,44 @@
 import Text from '@/components/atoms/Text';
 import Title from '@/components/atoms/Title';
 import { useAuth } from '@/hooks/useAuth';
+import useResponsive from '@/hooks/useResponsive';
+import {
+  BackImage,
+  NavLinkStyle,
+} from '@/pages/Main/components/HeroSection/styles';
 import { RouterPaths } from '@/router/types';
 import { Container } from '@/style/global';
-import { Button, Flex, Input } from 'antd';
-import { NavLink } from 'react-router-dom';
+import { Button, Flex } from 'antd';
 
 export default function HeroSection() {
   const { isAuth } = useAuth();
+  const { isTablet } = useResponsive();
 
   return (
     <section>
       <Container>
-        <Flex align="center">
+        <Flex align="center" vertical={!isTablet}>
           <div>
             <Title level={1} mb={20}>
               сервис по поиску
-              <br /> публикаций
-              <br /> о компании
-              <br /> по его ИНН
+              {isTablet && <br />} публикаций
+              {isTablet && <br />} о компании
+              {isTablet && <br />} по его ИНН
             </Title>
 
-            <Text maxWidth={534} mb={70}>
+            <Text maxWidth={534} mb={isTablet ? 70 : 32}>
               Комплексный анализ публикаций, получение данных в формате PDF на
               электронную почту.
             </Text>
 
             {isAuth && (
-              <NavLink to={RouterPaths.SEARCH}>
+              <NavLinkStyle to={RouterPaths.SEARCH}>
                 <Button size="large">Запросить данные</Button>
-              </NavLink>
+              </NavLinkStyle>
             )}
           </div>
 
-          <img
-            src="./images/main_back.png"
-            width="100%"
-            style={{ maxWidth: 593 }}
-          />
+          <BackImage src="./images/main_back.png" />
         </Flex>
       </Container>
     </section>

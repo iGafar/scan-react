@@ -29,11 +29,13 @@ export const CardUserWrapper = styled(Flex)`
   }
 
   @media (max-width: 450px) {
+    padding: 5px 10px;
+
     p {
       display: flex;
       flex-direction: column;
       align-items: flex-start;
-			text-align: start;
+      text-align: start;
     }
   }
 `;

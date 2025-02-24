@@ -5,6 +5,16 @@ export const FormStyle = styled(Form)`
   padding: 25px 25px 40px;
   max-width: 429px;
   width: 100%;
+  position: relative;
+  margin-left: 20px;
+
+  &::before {
+    content: url(./icons/lock.svg);
+    position: absolute;
+    left: 0;
+    top: 0;
+    transform: translate(-40px, -60px);
+  }
 
   .ant-form-item-label {
     padding-bottom: 15px !important;
@@ -20,6 +30,12 @@ export const FormStyle = styled(Form)`
 
   @media (max-width: 768px) {
     max-width: none;
+    margin-left: 0;
+
+    &::before {
+      left: 50%;
+      transform: translate(-100px, -80px);
+    }
   }
 `;
 

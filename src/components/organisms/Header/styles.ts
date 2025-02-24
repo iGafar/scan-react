@@ -4,6 +4,10 @@ import styled, { css } from 'styled-components';
 
 export const HeaderStyle = styled.header`
   padding-top: 10px;
+
+  @media (max-width: 768px) {
+    margin-bottom: 30px;
+  }
 `;
 
 export const Register = styled(Link)`

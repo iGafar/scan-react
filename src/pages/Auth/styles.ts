@@ -1,5 +1,9 @@
 import styled from 'styled-components';
 
+export const SectionStyle = styled.section`
+  margin-top: 70px;
+`;
+
 export const ImageWrapper = styled.picture`
   height: 100%;
 

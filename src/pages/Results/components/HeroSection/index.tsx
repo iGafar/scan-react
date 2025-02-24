@@ -6,7 +6,7 @@ export default function HeroSection() {
   return (
     <section>
       <ContainerStyle>
-        <Title level={3} mb={36}>
+        <Title level={2} mb={36}>
           Ищем. Скоро <br />
           будут результаты
         </Title>
