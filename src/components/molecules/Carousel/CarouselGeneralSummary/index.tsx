@@ -7,10 +7,14 @@ import {
   TitlesBlock,
 } from '@/components/molecules/Carousel/CarouselGeneralSummary/styles';
 import { IDocument } from '@/components/molecules/Carousel/CarouselGeneralSummary/types';
+import useResponsive from '@/hooks/useResponsive';
 import { Alert, Flex, Spin } from 'antd';
 import { useEffect, useState } from 'react';
 
 export default function CarouselGeneralSummary() {
+  const { isMobile, isPreMobile, isTablet, isLargeDesktop, isDesktop } =
+    useResponsive();
+
   const [getHistograms, { data, isLoading, isError }] =
     useGetHistogramsMutation({ fixedCacheKey: 'histograms' });
 
@@ -36,6 +40,23 @@ export default function CarouselGeneralSummary() {
     setDocuments([...newData]);
   }, [data]);
 
+  function getSlidesToShow(): number {
+    switch (true) {
+      case isLargeDesktop:
+        return 8;
+      case isDesktop:
+        return 7;
+      case isTablet:
+        return 5;
+      case isPreMobile:
+        return 3;
+      case isMobile:
+        return 1;
+      default:
+        return 8;
+    }
+  }
+
   if (isLoading)
     return (
       <Flex justify="center">
@@ -43,17 +64,7 @@ export default function CarouselGeneralSummary() {
       </Flex>
     );
 
-  if (isError)
-    return (
-      <Alert
-        type="error"
-        action={
-          <Flex justify="center">
-            <span>Что то пошло не так</span>
-          </Flex>
-        }
-      />
-    );
+  if (isError) return <Alert type="error" message="Что то пошло не так" />;
 
   if (!documents)
     return (
@@ -69,7 +80,7 @@ export default function CarouselGeneralSummary() {
 
   return (
     <CarouselWrapper>
-      <TitlesBlock vertical gap={26}>
+      <TitlesBlock vertical={isPreMobile} gap={26}>
         <Text size="large">Период</Text>
         <Text size="large">Всего</Text>
         <Text size="large">Риски</Text>
@@ -77,7 +88,12 @@ export default function CarouselGeneralSummary() {
       <CarouselStyle
         arrows
         draggable
-        slidesToShow={8 < documents.length ? 8 : documents.length}
+        dots={false}
+        slidesToShow={
+          getSlidesToShow() < documents.length
+            ? getSlidesToShow()
+            : documents.length
+        }
         infinite={false}
         prevArrow={
           <button>
@@ -91,7 +107,7 @@ export default function CarouselGeneralSummary() {
         }
       >
         {documents.map(item => (
-          <CarouselItem {...item} />
+          <CarouselItem key={item.date} {...item} />
         ))}
       </CarouselStyle>
     </CarouselWrapper>

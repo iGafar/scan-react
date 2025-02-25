@@ -1,4 +1,4 @@
-import { Card } from 'antd';
+import { Card, Flex } from 'antd';
 import styled, { css } from 'styled-components';
 
 export const CardStyle = styled(Card)<{
@@ -48,4 +48,33 @@ export const TariffsList = styled.ul`
   @media (max-width: 768px) {
     margin-bottom: 35px;
   }
+`;
+
+export const CardBody = styled(Flex)<{ $isActiveTariff: boolean }>`
+  height: 100%;
+  position: relative;
+
+  ${({ $isActiveTariff }) =>
+    $isActiveTariff &&
+    css`
+      .ant-btn,
+      .ant-btn:hover,
+      .ant-btn:focus {
+        color: var(--black) !important;
+        background-color: #d2d2d2 !important;
+      }
+
+      &::after {
+        content: 'Текущий тариф';
+        position: absolute;
+        top: -15px;
+        right: -15px;
+        padding: 5px 13px;
+        border-radius: 15px;
+        background-color: #3ba5e0;
+        color: var(--white);
+
+        font-size: 12px;
+      }
+    `}
 `;

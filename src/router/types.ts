@@ -4,6 +4,6 @@ export const enum RouterPaths {
   SEARCH = '/search',
   RESULTS = '/results',
   FAQ = '/faq',
-  TARIFFS = '/tarrifs',
+  TARIFFS = '/tariffs',
   ERROR = '/error',
 }

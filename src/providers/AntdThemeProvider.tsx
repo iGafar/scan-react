@@ -13,7 +13,7 @@ export default function AntdThemeProvider({ children }: IProviderProps) {
     components: {
       Button: {
         fontSize: 16,
-        contentFontSizeLG: 22,
+        contentFontSizeLG: 20,
         contentFontSizeSM: 14,
         defaultColor: '#ffffff',
         colorLink: '#5970FF',
@@ -54,6 +54,7 @@ export default function AntdThemeProvider({ children }: IProviderProps) {
         colorWhite: 'rgb(77,202,43)',
         controlInteractiveSize: 20,
         fontSize: 18,
+        lineHeight: 1,
       },
       Drawer: {
         colorBgElevated: '#029491',

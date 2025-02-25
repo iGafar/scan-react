@@ -10,6 +10,7 @@ interface IText {
   size?: TextSizeType;
   style?: CSSProperties;
   textCenter?: boolean;
+  className?: string;
 }
 
 export default function Text(props: IText) {
@@ -20,6 +21,7 @@ export default function Text(props: IText) {
     size = 'large',
     style,
     textCenter = false,
+    className,
   } = props;
 
   return (
@@ -29,6 +31,7 @@ export default function Text(props: IText) {
       $size={size}
       style={style}
       $textCenter={textCenter}
+      className={className}
     >
       {children}
     </TextStyle>

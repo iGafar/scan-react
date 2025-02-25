@@ -1,6 +1,7 @@
 import Text from '@/components/atoms/Text';
 import Title from '@/components/atoms/Title';
 import {
+  CardBody,
   CardStyle,
   CardTitle,
   TariffsList,
@@ -35,11 +36,12 @@ export default function CardTariff(props: ICardTariffProps) {
 
   const { isTablet } = useResponsive();
   const { isAuth } = useAuth();
+  const isActiveTariff = isAuth && title === 'Beginner';
 
   return (
     <CardStyle
       $backColor={backColor}
-      $isActiveTariff={isAuth && title === 'Beginner'}
+      $isActiveTariff={isActiveTariff}
       title={
         <Flex justify="space-between">
           <div>
@@ -54,7 +56,7 @@ export default function CardTariff(props: ICardTariffProps) {
         </Flex>
       }
     >
-      <Flex vertical style={{ height: '100%' }}>
+      <CardBody vertical $isActiveTariff={isActiveTariff}>
         <Title level={4} style={{ fontWeight: 500 }}>
           {price.toLocaleString('ru')} ₽
           <OldPrice>{oldPrice.toLocaleString('ru')} ₽</OldPrice>
@@ -74,8 +76,10 @@ export default function CardTariff(props: ICardTariffProps) {
             </li>
           ))}
         </TariffsList>
-        <Button size="large">Подробнее</Button>
-      </Flex>
+        <Button size="large">
+          {isActiveTariff ? 'Перейти в личный кабинет' : 'Подробнее'}
+        </Button>
+      </CardBody>
     </CardStyle>
   );
 }

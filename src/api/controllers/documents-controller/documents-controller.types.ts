@@ -88,19 +88,19 @@ export interface ISource {
 }
 
 export interface IOk {
-  schemaVersion: string;
+  // schemaVersion: string;
   id: string;
-  version: number;
+  // version: number;
   issueDate: string;
   url: string;
   source: ISource;
-  dedupClusterId: string;
-  plotClusterId: string;
+  // dedupClusterId: string;
+  // plotClusterId: string;
   title: ITitle;
   content: IContent;
-  entities: IEntities;
+  // entities: IEntities;
   attributes: IAttributes;
-  language: string;
+  // language: string;
 }
 
 export interface IDocumentItem {

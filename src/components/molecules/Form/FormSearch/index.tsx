@@ -157,10 +157,10 @@ export default function FormSearch() {
             <Flex vertical>
               {checkboxOptions.map(item => (
                 <Form.Item
+                  key={item.value}
                   name={item.value}
                   valuePropName="checked"
                   style={{ marginBottom: 15 }}
-                  key={item.value}
                 >
                   <Checkbox>{item.label}</Checkbox>
                 </Form.Item>

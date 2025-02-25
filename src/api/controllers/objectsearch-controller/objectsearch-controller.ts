@@ -4,18 +4,20 @@ import {
   IHistogram,
   IHistogramData,
   IObjectiveSearchBody,
+  IObjectiveSearchItem,
 } from '@/api/controllers/objectsearch-controller/objectsearch-controller.types';
 
 const CONTROLLER_URL = 'objectsearch';
 
 export const objectsearchController = commonApi.injectEndpoints({
   endpoints: builder => ({
-    getIds: builder.mutation<IGetIdsData, IObjectiveSearchBody>({
+    getIds: builder.mutation<IObjectiveSearchItem[], IObjectiveSearchBody>({
       query: body => ({
         url: CONTROLLER_URL,
         method: 'POST',
         body,
       }),
+      transformResponse: (res: IGetIdsData) => res.items,
     }),
     getHistograms: builder.mutation<IHistogram[], IObjectiveSearchBody>({
       query: body => ({

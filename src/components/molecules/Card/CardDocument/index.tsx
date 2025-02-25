@@ -1,49 +1,57 @@
+import { IOk } from '@/api/controllers/documents-controller/documents-controller.types';
 import Text from '@/components/atoms/Text';
 import Title from '@/components/atoms/Title';
+import { formatText } from '@/components/molecules/Card/CardDocument/lib/formatText';
+import { getAttribute } from '@/components/molecules/Card/CardDocument/lib/getAttribute';
 import {
+  CardDocumentStyle,
+  ContentText,
   ImageWrapper,
   NewsType,
 } from '@/components/molecules/Card/CardDocument/styles';
-import { Button, Card, Flex } from 'antd';
+import { getLocaleDate } from '@/lib/getLocaleDate';
+import { Button, Flex } from 'antd';
 
-export default function CardDocument() {
+interface ICardDocumentProps {
+  cardData: IOk;
+}
+
+export default function CardDocument(props: ICardDocumentProps) {
+  const { issueDate, source, title, attributes, content, url } = props.cardData;
+
+  const matches = content.markup.match(/https?:\/\/\S+"/g);
+  const imgUrl = matches
+    ? matches.toString().replace(/"/g, '')
+    : './images/search-mock.jpg';
+
   return (
-    <Card>
+    <CardDocumentStyle>
       <Text size="small" mb={24}>
-        13.09.2021 Комсомольская правда KP.RU
+        {getLocaleDate(issueDate)} <a href={url}>{source.name}</a>
       </Text>
 
       <Title level={5} mb={14}>
-        Скиллфэктори - лучшая онлайн-школа для будущих айтишников
+        {title.text}
       </Title>
 
-      <NewsType>Технические новости</NewsType>
+      <NewsType>{getAttribute(attributes)}</NewsType>
 
       <ImageWrapper>
-        <img
-          src="https://avatars.mds.yandex.net/i?id=43f1a029d98aef8cb0091dba04947086_l-5292126-images-thumbs&n=27&h=480&w=480"
-          alt=""
-        />
+        <img src={imgUrl} alt="news image" />
       </ImageWrapper>
 
-      <Text size="small" style={{ color: 'var(--gray-primary)' }} mb={32}>
-        SkillFactory — школа для всех, кто хочет изменить свою карьеру и жизнь.
-        С 2016 года обучение прошли 20 000+ человек из 40 стран с 4 континентов,
-        самому взрослому студенту сейчас 86 лет. Выпускники работают в Сбере,
-        Cisco, Bayer, Nvidia, МТС, Ростелекоме, Mail.ru, Яндексе, Ozon и других
-        топовых компаниях. Принципы SkillFactory: акцент на практике, забота о
-        студентах и ориентир на трудоустройство. 80% обучения — выполнение
-        упражнений и реальных проектов. Каждого студента поддерживают менторы, 2
-        саппорт-линии и комьюнити курса. А карьерный центр помогает составить
-        резюме, подготовиться к собеседованиям и познакомиться с IT-рекрутерами.
-      </Text>
+      <ContentText size="small" mb={32}>
+        {formatText(content.markup)}
+      </ContentText>
 
       <Flex justify="space-between" align="flex-end">
-        <Button type="primary">Читать в источнике</Button>
+        <a href={url} target="_blank">
+          <Button type="primary">Читать в источнике</Button>
+        </a>
         <Text size="small" style={{ color: 'var(--gray-primary)' }}>
-          2 543 слова
+          {attributes.wordCount.toLocaleString('ru-Ru')} слов
         </Text>
       </Flex>
-    </Card>
+    </CardDocumentStyle>
   );
 }
