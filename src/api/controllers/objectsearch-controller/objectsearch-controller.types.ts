@@ -80,5 +80,4 @@ export interface IObjectiveSearchItem {
 
 export interface IGetIdsData {
   items: IObjectiveSearchItem[];
-  mappings: any[];
 }
