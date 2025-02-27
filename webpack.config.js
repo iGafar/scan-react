@@ -3,6 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   mode: 'development',
@@ -10,13 +11,9 @@ module.exports = {
   output: {
     filename: 'main.js',
     path: path.resolve(__dirname, './dist'),
+    publicPath: '/scan-react/',
     clean: true,
   },
-  plugins: [
-    new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, './index.html'),
-    }),
-  ],
   module: {
     rules: [
       { test: /\.css$/, use: [MiniCssExtractPlugin.loader, 'css-loader'] },
@@ -24,6 +21,18 @@ module.exports = {
         test: /\.(js|jsx|ts|tsx)$/,
         exclude: /node_modules/,
         use: ['babel-loader'],
+      },
+      {
+        test: /\.(png|jpg|gif|svg)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+              outputPath: 'images/',
+            },
+          },
+        ],
       },
     ],
   },
@@ -35,10 +44,16 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
+      template: path.resolve(__dirname, './index.html'),
+    }),
+    new HtmlWebpackPlugin({
       title: 'Scan',
       template: './index.html',
     }),
     new MiniCssExtractPlugin({ filename: 'style.css' }),
+    new CopyWebpackPlugin({
+      patterns: [{ from: 'public', to: '' }],
+    }),
   ],
   optimization: {
     minimizer: [

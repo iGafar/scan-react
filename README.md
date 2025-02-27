@@ -2,6 +2,7 @@
 
 `Scan` is a web application for searching company information by TIN
 
+[`Application link`](igafar.github.io/scan-react/) </br>
 `Use login: sf_student1; password: 4i2385j`
 
 ## 👨‍💻 Technology Stack

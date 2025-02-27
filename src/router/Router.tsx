@@ -13,54 +13,57 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 const LazySearchPage = lazy(() => import('@/pages/Search'));
 const LazyResultsPage = lazy(() => import('@/pages/Results'));
 
-const router = createBrowserRouter([
-  {
-    path: RouterPaths.MAIN,
-    element: <Layout />,
-    children: [
-      {
-        index: true,
-        element: <MainPage />,
-      },
-      {
-        path: RouterPaths.AUTH,
-        element: (
-          <RedirectRoute redirectIfAuth>
-            <AuthPage />
-          </RedirectRoute>
-        ),
-      },
-      {
-        path: RouterPaths.SEARCH,
-        element: (
-          <RedirectRoute redirectIfAuth={false}>
-            <LazySearchPage />,
-          </RedirectRoute>
-        ),
-      },
-      {
-        path: RouterPaths.RESULTS,
-        element: (
-          <RedirectRoute redirectIfAuth={false}>
-            <LazyResultsPage />
-          </RedirectRoute>
-        ),
-      },
-      {
-        path: RouterPaths.TARIFFS,
-        element: <TarrifsPage />,
-      },
-      {
-        path: RouterPaths.FAQ,
-        element: <FaqPage />,
-      },
-      {
-        path: '*',
-        element: <ErrorPage />,
-      },
-    ],
-  },
-]);
+const router = createBrowserRouter(
+  [
+    {
+      path: RouterPaths.MAIN,
+      element: <Layout />,
+      children: [
+        {
+          index: true,
+          element: <MainPage />,
+        },
+        {
+          path: RouterPaths.AUTH,
+          element: (
+            <RedirectRoute redirectIfAuth>
+              <AuthPage />
+            </RedirectRoute>
+          ),
+        },
+        {
+          path: RouterPaths.SEARCH,
+          element: (
+            <RedirectRoute redirectIfAuth={false}>
+              <LazySearchPage />,
+            </RedirectRoute>
+          ),
+        },
+        {
+          path: RouterPaths.RESULTS,
+          element: (
+            <RedirectRoute redirectIfAuth={false}>
+              <LazyResultsPage />
+            </RedirectRoute>
+          ),
+        },
+        {
+          path: RouterPaths.TARIFFS,
+          element: <TarrifsPage />,
+        },
+        {
+          path: RouterPaths.FAQ,
+          element: <FaqPage />,
+        },
+        {
+          path: '*',
+          element: <ErrorPage />,
+        },
+      ],
+    },
+  ],
+  { basename: '/scan-react/' },
+);
 
 export default function AppRouter() {
   return (
