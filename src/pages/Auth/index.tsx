@@ -20,7 +20,7 @@ export default function AuthPage() {
 
               {isTablet && (
                 <ImageWrapper>
-                  <img src="./images/login_page_back.svg" alt="login back" />
+                  <img src="./images/login-page-back.svg" alt="login back" />
                 </ImageWrapper>
               )}
             </Flex>
@@ -29,7 +29,7 @@ export default function AuthPage() {
 
             {!isTablet && (
               <ImageWrapper>
-                <img src="./images/login_page_back.svg" alt="login back" />
+                <img src="./images/login-page-back.svg" alt="login back" />
               </ImageWrapper>
             )}
           </Flex>

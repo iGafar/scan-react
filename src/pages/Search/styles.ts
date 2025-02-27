@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const SearchSection = styled.section`
-  background: url('./images/search_page_back.svg') no-repeat bottom right;
+  background: url('./images/search-page-back.svg') no-repeat bottom right;
 
   @media (max-width: 900px) {
     padding-bottom: calc(100vw * 471 / 435) px;

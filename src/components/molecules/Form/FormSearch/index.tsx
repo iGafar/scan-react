@@ -15,7 +15,7 @@ import {
 } from '@/components/molecules/Form/FormSearch/style';
 import useResponsive from '@/hooks/useResponsive';
 import { handlePressOnlyNum } from '@/lib/handlePressOnlyNum';
-import { RouterPaths } from '@/router/types';
+import { RouterPathsEnum } from '@/router/types';
 import {
   Button,
   Checkbox,
@@ -65,7 +65,8 @@ export default function FormSearch() {
   }, []);
 
   useEffect(() => {
-    if (isGetHistogramsSucces && isGetIdsSuccess) navigate(RouterPaths.RESULTS);
+    if (isGetHistogramsSucces && isGetIdsSuccess)
+      navigate(RouterPathsEnum.RESULTS);
   }, [isGetHistogramsSucces, isGetIdsSuccess]);
 
   useEffect(() => {

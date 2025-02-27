@@ -1,6 +1,6 @@
 import { DividerStyle, Register } from '@/components/organisms/Header/styles';
 import useResponsive from '@/hooks/useResponsive';
-import { RouterPaths } from '@/router/types';
+import { RouterPathsEnum } from '@/router/types';
 import { Button, Flex } from 'antd';
 import { Link } from 'react-router-dom';
 
@@ -9,7 +9,7 @@ export default function HeaderAuthBlock() {
 
   return (
     <Flex align="center" gap={20} justify="center" vertical={!isTablet}>
-      <Register to={RouterPaths.AUTH}>
+      <Register to={RouterPathsEnum.AUTH}>
         <Button
           type="text"
           size={isTablet ? 'small' : 'middle'}
@@ -19,7 +19,7 @@ export default function HeaderAuthBlock() {
         </Button>
       </Register>
       {isTablet && <DividerStyle type="vertical" />}
-      <Link to={RouterPaths.AUTH}>
+      <Link to={RouterPathsEnum.AUTH}>
         <Button
           type="primary"
           size={isTablet ? 'small' : 'large'}

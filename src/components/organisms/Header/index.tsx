@@ -7,7 +7,7 @@ import HeaderUserInfo from '@/components/organisms/Header/components/HeaderUserI
 import { BurgerBtn, HeaderStyle } from '@/components/organisms/Header/styles';
 import { useAppSelector } from '@/hooks/reduxHooks';
 import useResponsive from '@/hooks/useResponsive';
-import { RouterPaths } from '@/router/types';
+import { RouterPathsEnum } from '@/router/types';
 import { Container } from '@/style/global';
 import { Flex } from 'antd';
 import { useState } from 'react';
@@ -23,7 +23,7 @@ export default function Header() {
     <HeaderStyle>
       <Container>
         <Flex justify="space-between" align="center">
-          <Link to={RouterPaths.MAIN}>
+          <Link to={RouterPathsEnum.MAIN}>
             <img src="./icons/logo-green.svg" />
           </Link>
 

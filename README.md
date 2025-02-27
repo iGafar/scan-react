@@ -2,7 +2,7 @@
 
 `Scan` is a web application for searching company information by TIN
 
-`Use login: sf_student1; password: 4i2385j`
+`Use login: aleksey; password: 4i2385j`
 
 ## 👨‍💻 Technology Stack
 
@@ -15,6 +15,15 @@
 ![Webpack](https://img.shields.io/badge/webpack-%238DD6F9.svg?style=for-the-badge&logo=webpack&logoColor=black)
 ![ESLint](https://img.shields.io/badge/ESLint-4B3263?style=for-the-badge&logo=eslint&logoColor=white)
 ![Prettier](https://img.shields.io/badge/prettier-%23F7B93E.svg?style=for-the-badge&logo=prettier&logoColor=black)
+
+## 📝 Architecture
+
+[Atomic Desigm](https://atomicdesign.bradfrost.com/chapter-2/)
+
+## 🔗 Useful links
+
+- [Naming rules](./docs/naming-rules.md)
+- [Сommit naming rules](https://www.conventionalcommits.org/en/v1.0.0/)
 
 ## 🏃 Getting Started
 

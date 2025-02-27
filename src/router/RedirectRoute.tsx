@@ -1,5 +1,5 @@
 import { useAuth } from '@/hooks/useAuth';
-import { RouterPaths } from '@/router/types';
+import { RouterPathsEnum } from '@/router/types';
 import { ReactNode } from 'react';
 import { Navigate } from 'react-router-dom';
 
@@ -14,8 +14,8 @@ export default function RedirectRoute({
 }: RedirectRouteProps) {
   const { isAuth } = useAuth();
 
-  if (isAuth && redirectIfAuth) return <Navigate to={RouterPaths.MAIN} />;
-  if (!isAuth && !redirectIfAuth) return <Navigate to={RouterPaths.MAIN} />;
+  if (isAuth && redirectIfAuth) return <Navigate to={RouterPathsEnum.MAIN} />;
+  if (!isAuth && !redirectIfAuth) return <Navigate to={RouterPathsEnum.MAIN} />;
 
   return children;
 }
