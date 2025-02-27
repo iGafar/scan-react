@@ -5,11 +5,12 @@ const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 
 module.exports = {
-  mode: 'development',
+  mode: 'production',
   entry: { scan: path.resolve(__dirname, './src/main.tsx') },
   output: {
     filename: 'main.js',
-    path: path.resolve(__dirname, './dist'),
+    path: path.resolve(__dirname, './build'),
+    publicPath: '/scan-react/',
     clean: true,
   },
   plugins: [

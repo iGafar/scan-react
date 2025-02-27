@@ -4,10 +4,13 @@
   "description": "",
   "main": "index.js",
   "type": "commonjs",
+  "homepage": "https://iGafar.github.io/scan-react",
   "scripts": {
     "build": "npx webpack --mode production",
     "dev": "npx webpack-dev-server --mode development",
-    "prepare": "husky"
+    "prepare": "husky",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "keywords": [],
   "author": "",
@@ -39,6 +42,7 @@
     "eslint-plugin-prettier": "^5.2.3",
     "eslint-plugin-react": "^7.37.4",
     "eslint-plugin-unused-imports": "^4.1.4",
+    "gh-pages": "^6.3.0",
     "globals": "^15.14.0",
     "html-webpack-plugin": "^5.6.3",
     "husky": "^9.1.7",
