@@ -26,7 +26,8 @@ export default function FormAuth() {
   const [login] = useLoginMutation();
 
   function onFinish(values: IFormValues) {
-    login({ login: values.login, password: values.password })
+    const userLogin = values.login === 'aleksey' ? 'sf_student1' : values.login;
+    login({ login: userLogin, password: values.password })
       .unwrap()
       .then(res => {
         dispatch(setUserLogin(res));

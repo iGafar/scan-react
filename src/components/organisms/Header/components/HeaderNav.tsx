@@ -1,12 +1,12 @@
 import { NavLinkStyle } from '@/components/organisms/Header/styles';
 import useResponsive from '@/hooks/useResponsive';
-import { RouterPaths } from '@/router/types';
+import { RouterPathsEnum } from '@/router/types';
 import { Flex } from 'antd';
 
 const navItems = [
-  { pageName: 'Главная', path: RouterPaths.MAIN },
-  { pageName: 'Тарифы', path: RouterPaths.TARIFFS },
-  { pageName: 'FAQ', path: RouterPaths.FAQ },
+  { pageName: 'Главная', path: RouterPathsEnum.MAIN },
+  { pageName: 'Тарифы', path: RouterPathsEnum.TARIFFS },
+  { pageName: 'FAQ', path: RouterPathsEnum.FAQ },
 ];
 
 export default function () {

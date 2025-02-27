@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const WhyUsSectionStyle = styled.section`
   .container {
     padding-bottom: 578px;
-    background: url(./images/why_we_back.png) no-repeat bottom/contain;
+    background: url(./images/why-we-back.png) no-repeat bottom/contain;
     background-size: 98%;
 
     @media (max-width: 1320px) {
@@ -12,7 +12,7 @@ export const WhyUsSectionStyle = styled.section`
 
     @media (max-width: 600px) {
       padding-bottom: calc(100vw * 393 / 361);
-      background-image: url(./images/why_we_back_mobile.svg);
+      background-image: url(./images/why-we-back-mobile.svg);
     }
   }
 `;

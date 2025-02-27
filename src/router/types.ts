@@ -1,4 +1,4 @@
-export const enum RouterPaths {
+export const enum RouterPathsEnum {
   MAIN = '/',
   AUTH = '/auth',
   SEARCH = '/search',

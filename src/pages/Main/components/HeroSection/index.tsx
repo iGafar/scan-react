@@ -6,7 +6,7 @@ import {
   BackImage,
   NavLinkStyle,
 } from '@/pages/Main/components/HeroSection/styles';
-import { RouterPaths } from '@/router/types';
+import { RouterPathsEnum } from '@/router/types';
 import { Container } from '@/style/global';
 import { Button, Flex } from 'antd';
 
@@ -32,13 +32,13 @@ export default function HeroSection() {
             </Text>
 
             {isAuth && (
-              <NavLinkStyle to={RouterPaths.SEARCH}>
+              <NavLinkStyle to={RouterPathsEnum.SEARCH}>
                 <Button size="large">Запросить данные</Button>
               </NavLinkStyle>
             )}
           </div>
 
-          <BackImage src="./images/main_back.png" />
+          <BackImage src="./images/main-back.png" />
         </Flex>
       </Container>
     </section>

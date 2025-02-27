@@ -5,7 +5,7 @@ import FaqPage from '@/pages/Faq';
 import MainPage from '@/pages/Main';
 import TarrifsPage from '@/pages/Tariffs';
 import RedirectRoute from '@/router/RedirectRoute';
-import { RouterPaths } from '@/router/types';
+import { RouterPathsEnum } from '@/router/types';
 import { Flex, Spin } from 'antd';
 import { lazy, Suspense } from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
@@ -16,7 +16,7 @@ const LazyResultsPage = lazy(() => import('@/pages/Results'));
 const router = createBrowserRouter(
   [
     {
-      path: RouterPaths.MAIN,
+      path: RouterPathsEnum.MAIN,
       element: <Layout />,
       children: [
         {
@@ -24,7 +24,7 @@ const router = createBrowserRouter(
           element: <MainPage />,
         },
         {
-          path: RouterPaths.AUTH,
+          path: RouterPathsEnum.AUTH,
           element: (
             <RedirectRoute redirectIfAuth>
               <AuthPage />
@@ -32,7 +32,7 @@ const router = createBrowserRouter(
           ),
         },
         {
-          path: RouterPaths.SEARCH,
+          path: RouterPathsEnum.SEARCH,
           element: (
             <RedirectRoute redirectIfAuth={false}>
               <LazySearchPage />,
@@ -40,7 +40,7 @@ const router = createBrowserRouter(
           ),
         },
         {
-          path: RouterPaths.RESULTS,
+          path: RouterPathsEnum.RESULTS,
           element: (
             <RedirectRoute redirectIfAuth={false}>
               <LazyResultsPage />
@@ -48,11 +48,11 @@ const router = createBrowserRouter(
           ),
         },
         {
-          path: RouterPaths.TARIFFS,
+          path: RouterPathsEnum.TARIFFS,
           element: <TarrifsPage />,
         },
         {
-          path: RouterPaths.FAQ,
+          path: RouterPathsEnum.FAQ,
           element: <FaqPage />,
         },
         {

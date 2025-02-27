@@ -17,6 +17,15 @@
 ![ESLint](https://img.shields.io/badge/ESLint-4B3263?style=for-the-badge&logo=eslint&logoColor=white)
 ![Prettier](https://img.shields.io/badge/prettier-%23F7B93E.svg?style=for-the-badge&logo=prettier&logoColor=black)
 
+## 📝 Architecture
+
+[Atomic Desigm](https://atomicdesign.bradfrost.com/chapter-2/)
+
+## 🔗 Useful links
+
+- [Naming rules](./docs/naming-rules.md)
+- [Сommit naming rules](https://www.conventionalcommits.org/en/v1.0.0/)
+
 ## 🏃 Getting Started
 
 `Required Node.js version 21.4 and higher!`
