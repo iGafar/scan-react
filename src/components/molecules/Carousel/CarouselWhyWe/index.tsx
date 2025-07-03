@@ -1,6 +1,6 @@
 import CardMainCarousel from '@/components/molecules/Card/CardMainCarousel';
+import ArrowBtn from '@/components/molecules/Carousel/CarouselGeneralSummary/ArrowBtn';
 import { CarouselWrapper } from '@/components/molecules/Carousel/CarouselWhyWe/styles';
-import ArrowBtn from '@/components/molecules/Carousel/components/ArrowBtn';
 import useResponsive from '@/hooks/useResponsive';
 import { Carousel } from 'antd';
 
