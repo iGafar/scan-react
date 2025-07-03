@@ -1,5 +1,6 @@
 import CardMainCarousel from '@/components/molecules/Card/CardMainCarousel';
 import { CarouselWrapper } from '@/components/molecules/Carousel/CarouselWhyWe/styles';
+import ArrowBtn from '@/components/molecules/Carousel/components/ArrowBtn';
 import useResponsive from '@/hooks/useResponsive';
 import { Carousel } from 'antd';
 
@@ -31,14 +32,14 @@ export default function CarouselWhyWe() {
         draggable
         slidesToShow={isDesktop ? 3 : isPreMobile ? 2 : 1}
         prevArrow={
-          <button>
+          <ArrowBtn>
             <img src="./images/carousel/arrow.svg" alt="arrow" />
-          </button>
+          </ArrowBtn>
         }
         nextArrow={
-          <button>
+          <ArrowBtn>
             <img src="./images/carousel/arrow.svg" alt="arrow" />
-          </button>
+          </ArrowBtn>
         }
       >
         {carouselItems.map(item => (

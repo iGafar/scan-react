@@ -1,11 +1,12 @@
 import { useLoginMutation } from '@/api/controllers/account-controller/account-controller';
-import {
-  ButtonStyle,
-  FormStyle,
-} from '@/components/molecules/Form/FormAuth/styles';
 import AnimatedContainer from '@/components/atoms/AnimatedContainer';
 import StaggerContainer from '@/components/atoms/StaggerContainer';
 import StaggerItem from '@/components/atoms/StaggerItem';
+import {
+  AnimatedContainerStyle,
+  ButtonStyle,
+  FormStyle,
+} from '@/components/molecules/Form/FormAuth/styles';
 import { useAppDispatch } from '@/hooks/reduxHooks';
 import { setUserLogin } from '@/store/authSlice';
 import { Button, Flex, Form, Input } from 'antd';
@@ -41,7 +42,7 @@ export default function FormAuth() {
   }
 
   return (
-    <AnimatedContainer delay={0.3}>
+    <AnimatedContainerStyle delay={0.3}>
       {/* @ts-ignore */}
       <FormStyle layout="vertical" onFinish={onFinish} form={form}>
         <StaggerContainer>
@@ -76,14 +77,9 @@ export default function FormAuth() {
 
           <StaggerItem>
             <Flex vertical gap={15} style={{ marginBottom: 30 }}>
-              <motion.div
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                <Button htmlType="submit" disabled={isFormValid}>
-                  Войти
-                </Button>
-              </motion.div>
+              <Button htmlType="submit" disabled={isFormValid}>
+                Войти
+              </Button>
 
               <Button
                 type="link"
@@ -101,8 +97,6 @@ export default function FormAuth() {
                 {['google', 'facebook', 'yandex'].map((social, index) => (
                   <motion.div
                     key={social}
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.9 }}
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.8 + index * 0.1 }}
@@ -117,6 +111,6 @@ export default function FormAuth() {
           </StaggerItem>
         </StaggerContainer>
       </FormStyle>
-    </AnimatedContainer>
+    </AnimatedContainerStyle>
   );
 }

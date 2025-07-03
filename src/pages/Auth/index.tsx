@@ -1,3 +1,4 @@
+import FadeInOnScroll from '@/components/atoms/FadeInOnScroll';
 import Title from '@/components/atoms/Title';
 import FormAuth from '@/components/molecules/Form/FormAuth';
 import useResponsive from '@/hooks/useResponsive';
@@ -9,32 +10,34 @@ export default function AuthPage() {
   const { isTablet } = useResponsive();
 
   return (
-    <main>
-      <SectionStyle>
-        <Container>
-          <Flex justify="space-between" gap={10} vertical={!isTablet}>
-            <Flex vertical justify="space-between">
+    <SectionStyle>
+      <Container>
+        <Flex justify="space-between" gap={10} vertical={!isTablet}>
+          <Flex vertical justify="space-between">
+            <FadeInOnScroll>
               <Title level={3} mb={!isTablet ? 126 : 0} maxWidth={700}>
                 Для оформления подписки на тариф, необходимо авторизоваться.
               </Title>
+            </FadeInOnScroll>
 
-              {isTablet && (
+            {isTablet && (
+              <FadeInOnScroll delay={0.3}>
                 <ImageWrapper>
                   <img src="./images/login-page-back.svg" alt="login back" />
                 </ImageWrapper>
-              )}
-            </Flex>
-
-            <FormAuth />
-
-            {!isTablet && (
-              <ImageWrapper>
-                <img src="./images/login-page-back.svg" alt="login back" />
-              </ImageWrapper>
+              </FadeInOnScroll>
             )}
           </Flex>
-        </Container>
-      </SectionStyle>
-    </main>
+
+          <FormAuth />
+
+          {!isTablet && (
+            <ImageWrapper>
+              <img src="./images/login-page-back.svg" alt="login back" />
+            </ImageWrapper>
+          )}
+        </Flex>
+      </Container>
+    </SectionStyle>
   );
 }

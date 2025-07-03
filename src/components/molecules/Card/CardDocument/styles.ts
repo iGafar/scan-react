@@ -3,7 +3,7 @@ import { Card } from 'antd';
 import styled from 'styled-components';
 
 export const CardDocumentStyle = styled(Card)`
-  width: calc(50% - 19px);
+  height: 100%;
 
   .ant-card-body {
     height: 100%;

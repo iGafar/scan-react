@@ -1,12 +1,18 @@
+import AnimatedContainer from '@/components/atoms/AnimatedContainer';
 import { Button, Form } from 'antd';
 import styled from 'styled-components';
+
+export const AnimatedContainerStyle = styled(AnimatedContainer)`
+	@media (min-width: 768px) {
+		margin-left: 20px;
+	}
+`
 
 export const FormStyle = styled(Form)`
   padding: 25px 25px 40px;
   max-width: 429px;
   width: 100%;
   position: relative;
-  margin-left: 20px;
 
   &::before {
     content: url(./icons/lock.svg);
@@ -30,7 +36,6 @@ export const FormStyle = styled(Form)`
 
   @media (max-width: 768px) {
     max-width: none;
-    margin-left: 0;
 
     &::before {
       left: 50%;

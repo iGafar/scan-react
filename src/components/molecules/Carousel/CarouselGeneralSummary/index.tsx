@@ -1,5 +1,6 @@
 import { useGetHistogramsMutation } from '@/api/controllers/objectsearch-controller/objectsearch-controller';
 import Text from '@/components/atoms/Text';
+import ArrowBtn from '@/components/molecules/Carousel/components/ArrowBtn';
 import CarouselItem from '@/components/molecules/Carousel/CarouselGeneralSummary/CarouselItem';
 import {
   CarouselStyle,
@@ -21,8 +22,17 @@ export default function CarouselGeneralSummary() {
   const [documents, setDocuments] = useState<IDocument[]>([]);
 
   useEffect(() => {
-    if (!data)
-      getHistograms(JSON.parse(sessionStorage.getItem('histogramsBody') || ''));
+    if (!data) {
+      const histogramsBody = sessionStorage.getItem('histogramsBody');
+      if (histogramsBody && histogramsBody.trim() !== '') {
+        try {
+          getHistograms(JSON.parse(histogramsBody));
+        } catch (e) {
+          console.error('Ошибка парсинга histogramsBody:', e);
+          sessionStorage.removeItem('histogramsBody');
+        }
+      }
+    }
   }, []);
 
   useEffect(() => {
@@ -90,25 +100,27 @@ export default function CarouselGeneralSummary() {
         draggable
         dots={false}
         slidesToShow={
-          getSlidesToShow() < documents.length
-            ? getSlidesToShow()
-            : documents.length
+          documents.length === 0
+            ? 1
+            : Math.min(getSlidesToShow(), documents.length)
         }
         infinite={false}
         prevArrow={
-          <button>
+          <ArrowBtn>
             <img src="./images/carousel/arrow.svg" alt="arrow" />
-          </button>
+          </ArrowBtn>
         }
         nextArrow={
-          <button>
+          <ArrowBtn>
             <img src="./images/carousel/arrow.svg" alt="arrow" />
-          </button>
+          </ArrowBtn>
         }
       >
-        {documents.map(item => (
-          <CarouselItem key={item.date} {...item} />
-        ))}
+        {documents.length === 0 ? (
+          <CarouselItem key="empty" date="" documentValue={0} riskValue={0} />
+        ) : (
+          documents.map(item => <CarouselItem key={item.date} {...item} />)
+        )}
       </CarouselStyle>
     </CarouselWrapper>
   );

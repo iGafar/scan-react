@@ -7,7 +7,7 @@ export default function App() {
   return (
     <AntdThemeProvider>
       <Toaster
-    		richColors
+        richColors
         expand={false}
         position="top-right"
         closeButton
