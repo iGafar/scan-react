@@ -13,6 +13,9 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 const LazySearchPage = lazy(() => import('@/pages/Search'));
 const LazyResultsPage = lazy(() => import('@/pages/Results'));
 
+// Определяем basename в зависимости от окружения
+const basename = process.env.NODE_ENV === 'production' ? '/scan-react/' : '/';
+
 const router = createBrowserRouter(
   [
     {
@@ -62,15 +65,15 @@ const router = createBrowserRouter(
       ],
     },
   ],
-  { basename: '/scan-react/' },
+  { basename },
 );
 
 export default function AppRouter() {
   return (
     <Suspense
       fallback={
-        <Flex>
-          <Spin />
+        <Flex justify="center" align="center" style={{ height: '100vh' }}>
+          <Spin size="large" />
         </Flex>
       }
     >
