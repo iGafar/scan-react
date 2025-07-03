@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "type": "commonjs",
+  "homepage": "https://igafar.github.io/",
   "scripts": {
     "build": "npx webpack --mode production",
     "dev": "npx webpack-dev-server --mode development",
@@ -23,7 +24,7 @@
     "copy-webpack-plugin": "^12.0.2",
     "framer-motion": "^11.0.8",
     "react": "^18.2.0",
-  	"react-dom": "^18.2.0",
+    "react-dom": "^18.2.0",
     "react-redux": "^9.2.0",
     "react-router-dom": "^7.1.5",
     "sonner": "^1.7.4",

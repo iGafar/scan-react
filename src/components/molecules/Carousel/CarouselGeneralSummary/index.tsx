@@ -1,6 +1,6 @@
 import { useGetHistogramsMutation } from '@/api/controllers/objectsearch-controller/objectsearch-controller';
 import Text from '@/components/atoms/Text';
-import ArrowBtn from '@/components/molecules/Carousel/components/ArrowBtn';
+import ArrowBtn from '@/components/molecules/Carousel/CarouselGeneralSummary/ArrowBtn';
 import CarouselItem from '@/components/molecules/Carousel/CarouselGeneralSummary/CarouselItem';
 import {
   CarouselStyle,
