@@ -1,5 +1,5 @@
 import { motion, useInView } from 'framer-motion';
-import { ReactNode, useRef } from 'react';
+import { CSSProperties, ReactNode, useRef } from 'react';
 
 interface IFadeInOnScrollProps {
   children: ReactNode;
@@ -7,6 +7,7 @@ interface IFadeInOnScrollProps {
   duration?: number;
   className?: string;
   threshold?: number;
+	style?: CSSProperties;
 }
 
 export default function FadeInOnScroll(props: IFadeInOnScrollProps) {
@@ -15,7 +16,8 @@ export default function FadeInOnScroll(props: IFadeInOnScrollProps) {
     delay = 0, 
     duration = 0.8, 
     className,
-    threshold = 0.1 
+    threshold = 0.3,
+		style
   } = props;
   
   const ref = useRef(null);
@@ -36,6 +38,7 @@ export default function FadeInOnScroll(props: IFadeInOnScrollProps) {
         ease: [0.25, 0.46, 0.45, 0.94]
       }}
       className={className}
+			style={style}
     >
       {children}
     </motion.div>

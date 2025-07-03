@@ -1,3 +1,6 @@
+import FadeInOnScroll from '@/components/atoms/FadeInOnScroll';
+import StaggerContainer from '@/components/atoms/StaggerContainer';
+import StaggerItem from '@/components/atoms/StaggerItem';
 import Text from '@/components/atoms/Text';
 import Title from '@/components/atoms/Title';
 import CarouselGeneralSummary from '@/components/molecules/Carousel/CarouselGeneralSummary';
@@ -10,14 +13,27 @@ export default function GeneralSection() {
   return (
     <section>
       <Container>
-        <Title level={4} mb={isTablet ? 17 : 10}>
-          Общая сводка
-        </Title>
-        <Text size="medium" mb={27} style={{ color: 'var(--gray-primary)' }}>
-          Найдено 4 221 вариантов
-        </Text>
+        <StaggerContainer staggerDelay={0.3}>
+          <StaggerItem>
+            <Title level={2} mb={isTablet ? 36 : 20}>
+              Общая сводка
+            </Title>
+          </StaggerItem>
 
-        <CarouselGeneralSummary />
+          <StaggerItem>
+            <Text
+              size="medium"
+              mb={isTablet ? 27 : 10}
+              style={{ color: 'var(--gray-primary)' }}
+            >
+              Поиск завершен, найдены результаты.
+            </Text>
+          </StaggerItem>
+
+          <StaggerItem>
+            <CarouselGeneralSummary />
+          </StaggerItem>
+        </StaggerContainer>
       </Container>
     </section>
   );

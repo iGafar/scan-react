@@ -17,7 +17,7 @@ export default function WhyUsSection() {
           </Title>
         </FadeInOnScroll>
 
-        <FadeInOnScroll delay={0.3}>
+        <FadeInOnScroll delay={0.1}>
           <CarouselWhyWe />
         </FadeInOnScroll>
       </Container>

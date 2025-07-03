@@ -1,13 +1,14 @@
 import { motion } from 'framer-motion';
-import { ReactNode } from 'react';
+import { CSSProperties, ReactNode } from 'react';
 
 interface IStaggerItemProps {
   children: ReactNode;
   className?: string;
+	style?: CSSProperties;
 }
 
 export default function StaggerItem(props: IStaggerItemProps) {
-  const { children, className } = props;
+  const { children, className, style } = props;
 
   const itemVariants = {
     hidden: { 
@@ -27,7 +28,7 @@ export default function StaggerItem(props: IStaggerItemProps) {
   };
 
   return (
-    <motion.div variants={itemVariants} className={className}>
+    <motion.div variants={itemVariants} className={className} style={style}>
       {children}
     </motion.div>
   );

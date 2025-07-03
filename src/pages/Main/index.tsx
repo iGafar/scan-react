@@ -4,10 +4,10 @@ import WhyUsSection from '@/pages/Main/components/WhyUsSection';
 
 export default function MainPage() {
   return (
-    <main>
+    <>
       <HeroSection />
       <WhyUsSection />
       <OurTariffsSection />
-    </main>
+    </>
   );
 }

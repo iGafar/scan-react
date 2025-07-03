@@ -1,10 +1,18 @@
 import { useGetDocumentsMutation } from '@/api/controllers/documents-controller/documents-controller';
 import { IDocumentItem } from '@/api/controllers/documents-controller/documents-controller.types';
 import { useGetIdsMutation } from '@/api/controllers/objectsearch-controller/objectsearch-controller';
+import FadeInOnScroll from '@/components/atoms/FadeInOnScroll';
+import StaggerContainer from '@/components/atoms/StaggerContainer';
 import CardDocument from '@/components/molecules/Card/CardDocument';
 import useResponsive from '@/hooks/useResponsive';
 import { Alert, Button, Flex, Spin } from 'antd';
+import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 100 },
+  visible: { opacity: 1, y: 0 },
+};
 
 export default function DocumentsList() {
   const { isMobile } = useResponsive();
@@ -38,8 +46,16 @@ export default function DocumentsList() {
   }, [loadingPage, newIds, getDocuments]);
 
   useEffect(() => {
-    if (!ids)
-      getIds(JSON.parse(sessionStorage.getItem('histogramsBody') || ''));
+    const histogramsBody = sessionStorage.getItem('histogramsBody');
+    if (!ids && histogramsBody && histogramsBody.trim() !== '') {
+      try {
+        const parsed = JSON.parse(histogramsBody);
+        getIds(parsed);
+      } catch (e) {
+        console.error('Ошибка парсинга histogramsBody:', e);
+        sessionStorage.removeItem('histogramsBody');
+      }
+    }
   }, []);
 
   useEffect(() => {
@@ -70,21 +86,39 @@ export default function DocumentsList() {
 
   return (
     <>
-      <Flex gap={38} wrap style={{ marginBottom: 38 }}>
-        {newDocuments?.map(el => {
-          return <CardDocument key={el.ok.id} cardData={el.ok} />;
-        })}
-      </Flex>
+      <StaggerContainer staggerDelay={0.3}>
+        <Flex gap={38} wrap style={{ marginBottom: 38 }}>
+          {newDocuments?.map(el => {
+            return (
+              <motion.div
+                variants={itemVariants}
+                key={el.ok.id}
+                style={{ width: 'calc(50% - 19px)' }}
+              >
+                <FadeInOnScroll
+                  style={{ height: '100%' }}
+                  delay={0.1}
+                  threshold={0.1}
+                >
+                  <CardDocument key={el.ok.id} cardData={el.ok} />
+                </FadeInOnScroll>
+              </motion.div>
+            );
+          })}
+        </Flex>
+      </StaggerContainer>
 
       {newIds.length !== newDocuments.length && (
-        <Flex justify="center">
-          <Button
-            onClick={() => setLoadingPage(prev => prev + documentsLimit)}
-            style={{ width: isMobile ? '100%' : 'auto' }}
-          >
-            Показать больше
-          </Button>
-        </Flex>
+        <FadeInOnScroll>
+          <Flex justify="center">
+            <Button
+              onClick={() => setLoadingPage(prev => prev + documentsLimit)}
+              style={{ width: isMobile ? '100%' : 'auto' }}
+            >
+              Показать больше
+            </Button>
+          </Flex>
+        </FadeInOnScroll>
       )}
     </>
   );

@@ -1,8 +1,8 @@
-import Text from '@/components/atoms/Text';
-import Title from '@/components/atoms/Title';
 import AnimatedContainer from '@/components/atoms/AnimatedContainer';
 import StaggerContainer from '@/components/atoms/StaggerContainer';
 import StaggerItem from '@/components/atoms/StaggerItem';
+import Text from '@/components/atoms/Text';
+import Title from '@/components/atoms/Title';
 import { useAuth } from '@/hooks/useAuth';
 import useResponsive from '@/hooks/useResponsive';
 import {
@@ -12,7 +12,6 @@ import {
 import { RouterPathsEnum } from '@/router/types';
 import { Container } from '@/style/global';
 import { Button, Flex } from 'antd';
-import { motion } from 'framer-motion';
 
 export default function HeroSection() {
   const { isAuth } = useAuth();
@@ -42,13 +41,7 @@ export default function HeroSection() {
             {isAuth && (
               <StaggerItem>
                 <NavLinkStyle to={RouterPathsEnum.SEARCH}>
-                  <motion.div
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    transition={{ type: "spring", stiffness: 400, damping: 17 }}
-                  >
-                    <Button size="large">Запросить данные</Button>
-                  </motion.div>
+                  <Button size="large">Запросить данные</Button>
                 </NavLinkStyle>
               </StaggerItem>
             )}

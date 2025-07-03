@@ -1,4 +1,5 @@
 import {
+  objectsearchController,
   useGetHistogramsMutation,
   useGetIdsMutation,
 } from '@/api/controllers/objectsearch-controller/objectsearch-controller';
@@ -13,6 +14,7 @@ import {
   FormStyle,
   Propmpt,
 } from '@/components/molecules/Form/FormSearch/style';
+import { useAppDispatch } from '@/hooks/reduxHooks';
 import useResponsive from '@/hooks/useResponsive';
 import { handlePressOnlyNum } from '@/lib/handlePressOnlyNum';
 import { RouterPathsEnum } from '@/router/types';
@@ -46,10 +48,12 @@ export interface IFormSearchValues {
 
 export default function FormSearch() {
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
   const { isLargeDesktop, isMobile } = useResponsive();
   const [form] = Form.useForm<IFormSearchValues>();
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const [isFormValid, setIsFormValid] = useState<boolean>(false);
+  const [wasSubmitted, setWasSubmitted] = useState(false);
 
   const [
     getHistograms,
@@ -61,13 +65,10 @@ export default function FormSearch() {
   const values = Form.useWatch([], form);
 
   useEffect(() => {
-    sessionStorage.removeItem('histogramsBody');
-  }, []);
-
-  useEffect(() => {
-    if (isGetHistogramsSucces && isGetIdsSuccess)
+    if (wasSubmitted && isGetHistogramsSucces && isGetIdsSuccess) {
       navigate(RouterPathsEnum.RESULTS);
-  }, [isGetHistogramsSucces, isGetIdsSuccess]);
+    }
+  }, [wasSubmitted, isGetHistogramsSucces, isGetIdsSuccess]);
 
   useEffect(() => {
     form
@@ -80,6 +81,7 @@ export default function FormSearch() {
     const body = getBody(values);
 
     setIsSubmitting(true);
+    setWasSubmitted(true);
     Promise.all([getHistograms(body), getIds(body)]).finally(() =>
       setIsSubmitting(false),
     );

@@ -1,14 +1,15 @@
 import { motion } from 'framer-motion';
-import { ReactNode } from 'react';
+import { CSSProperties, ReactNode } from 'react';
 
 interface IStaggerContainerProps {
   children: ReactNode;
   staggerDelay?: number;
   className?: string;
+  style?: CSSProperties;
 }
 
 export default function StaggerContainer(props: IStaggerContainerProps) {
-  const { children, staggerDelay = 0.1, className } = props;
+  const { children, staggerDelay = 0.1, className, style } = props;
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -27,6 +28,7 @@ export default function StaggerContainer(props: IStaggerContainerProps) {
       animate="visible"
       variants={containerVariants}
       className={className}
+      style={style}
     >
       {children}
     </motion.div>
