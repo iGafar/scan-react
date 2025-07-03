@@ -3,9 +3,13 @@ import {
   ButtonStyle,
   FormStyle,
 } from '@/components/molecules/Form/FormAuth/styles';
+import AnimatedContainer from '@/components/atoms/AnimatedContainer';
+import StaggerContainer from '@/components/atoms/StaggerContainer';
+import StaggerItem from '@/components/atoms/StaggerItem';
 import { useAppDispatch } from '@/hooks/reduxHooks';
 import { setUserLogin } from '@/store/authSlice';
 import { Button, Flex, Form, Input } from 'antd';
+import { motion } from 'framer-motion';
 import { toast } from 'sonner';
 
 interface IFormValues {
@@ -37,58 +41,82 @@ export default function FormAuth() {
   }
 
   return (
-    //@ts-ignore
-    <FormStyle layout="vertical" onFinish={onFinish} form={form}>
-      <Flex gap={15} style={{ marginBottom: 40 }}>
-        <ButtonStyle type="text">Войти</ButtonStyle>
-        <ButtonStyle type="text" disabled>
-          Зарегистрироваться
-        </ButtonStyle>
-      </Flex>
+    <AnimatedContainer delay={0.3}>
+      {/* @ts-ignore */}
+      <FormStyle layout="vertical" onFinish={onFinish} form={form}>
+        <StaggerContainer>
+          <StaggerItem>
+            <Flex gap={15} style={{ marginBottom: 40 }}>
+              <ButtonStyle type="text">Войти</ButtonStyle>
+              <ButtonStyle type="text" disabled>
+                Зарегистрироваться
+              </ButtonStyle>
+            </Flex>
+          </StaggerItem>
 
-      <Form.Item
-        name="login"
-        label="Логин или номер телефона:"
-        rules={[{ required: true, message: 'Введите логин' }]}
-      >
-        <Input size="large" />
-      </Form.Item>
+          <StaggerItem>
+            <Form.Item
+              name="login"
+              label="Логин или номер телефона:"
+              rules={[{ required: true, message: 'Введите логин' }]}
+            >
+              <Input size="large" />
+            </Form.Item>
+          </StaggerItem>
 
-      <Form.Item
-        name="password"
-        label="Пароль:"
-        rules={[{ required: true, message: 'Введите пароль' }]}
-      >
-        <Input size="large" />
-      </Form.Item>
+          <StaggerItem>
+            <Form.Item
+              name="password"
+              label="Пароль:"
+              rules={[{ required: true, message: 'Введите пароль' }]}
+            >
+              <Input size="large" />
+            </Form.Item>
+          </StaggerItem>
 
-      <Flex vertical gap={15} style={{ marginBottom: 30 }}>
-        <Button htmlType="submit" disabled={isFormValid}>
-          Войти
-        </Button>
+          <StaggerItem>
+            <Flex vertical gap={15} style={{ marginBottom: 30 }}>
+              <motion.div
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <Button htmlType="submit" disabled={isFormValid}>
+                  Войти
+                </Button>
+              </motion.div>
 
-        <Button
-          type="link"
-          size="small"
-          style={{ textDecoration: 'underline' }}
-        >
-          Восстановить пароль
-        </Button>
-      </Flex>
+              <Button
+                type="link"
+                size="small"
+                style={{ textDecoration: 'underline' }}
+              >
+                Восстановить пароль
+              </Button>
+            </Flex>
+          </StaggerItem>
 
-      <Form.Item label="Войти через:">
-        <Flex>
-          <Button type="text" size="small">
-            <img src="./icons/social/google.png" alt="google" />
-          </Button>
-          <Button type="text" size="small">
-            <img src="./icons/social/facebook.png" alt="facebook" />
-          </Button>
-          <Button type="text" size="small">
-            <img src="./icons/social/yandex.png" alt="yandex" />
-          </Button>
-        </Flex>
-      </Form.Item>
-    </FormStyle>
+          <StaggerItem>
+            <Form.Item label="Войти через:">
+              <Flex>
+                {['google', 'facebook', 'yandex'].map((social, index) => (
+                  <motion.div
+                    key={social}
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.8 + index * 0.1 }}
+                  >
+                    <Button type="text" size="small">
+                      <img src={`./icons/social/${social}.png`} alt={social} />
+                    </Button>
+                  </motion.div>
+                ))}
+              </Flex>
+            </Form.Item>
+          </StaggerItem>
+        </StaggerContainer>
+      </FormStyle>
+    </AnimatedContainer>
   );
 }
