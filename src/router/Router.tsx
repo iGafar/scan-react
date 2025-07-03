@@ -13,7 +13,6 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 const LazySearchPage = lazy(() => import('@/pages/Search'));
 const LazyResultsPage = lazy(() => import('@/pages/Results'));
 
-// Определяем basename в зависимости от окружения
 const basename = process.env.NODE_ENV === 'production' ? '/scan-react/' : '/';
 
 const router = createBrowserRouter(

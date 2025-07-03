@@ -54,7 +54,14 @@ module.exports = (env, argv) => {
       }),
       new MiniCssExtractPlugin({ filename: 'style.css' }),
       new CopyWebpackPlugin({
-        patterns: [{ from: 'public', to: '' }],
+        patterns: [
+          { from: 'public', to: '' },
+          {
+            from: path.resolve(__dirname, 'dist/index.html'),
+            to: '404.html',
+            noErrorOnMissing: true,
+          },
+        ],
       }),
     ],
     optimization: {
