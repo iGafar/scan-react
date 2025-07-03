@@ -11,10 +11,13 @@ import { IDocument } from '@/components/molecules/Carousel/CarouselGeneralSummar
 import useResponsive from '@/hooks/useResponsive';
 import { Alert, Flex, Spin } from 'antd';
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'sonner';
 
 export default function CarouselGeneralSummary() {
   const { isMobile, isPreMobile, isTablet, isLargeDesktop, isDesktop } =
     useResponsive();
+  const navigate = useNavigate();
 
   const [getHistograms, { data, isLoading, isError }] =
     useGetHistogramsMutation({ fixedCacheKey: 'histograms' });
@@ -36,18 +39,25 @@ export default function CarouselGeneralSummary() {
   }, []);
 
   useEffect(() => {
-    const newTotalDocuments = data ? data[0].data : [];
-    const newriskFactors = data ? data[1].data : [];
+    const newTotalDocuments = data ? data[0]?.data : [];
+    const newriskFactors = data ? data[1]?.data : [];
 
-    const newData: IDocument[] = newTotalDocuments.map((el, i) => {
-      return {
-        date: el.date,
-        documentValue: el.value,
-        riskValue: newriskFactors[i].value,
-      };
-    });
+    const newData: IDocument[] = newTotalDocuments
+      ? newTotalDocuments.map((el, i) => {
+          return {
+            date: el.date,
+            documentValue: el.value,
+            riskValue: newriskFactors[i].value,
+          };
+        })
+      : [];
 
-    setDocuments([...newData]);
+    if (newData.length) {
+      setDocuments([...newData]);
+    } else {
+      toast.error('Нет данных для отображения');
+      navigate('/search');
+    }
   }, [data]);
 
   function getSlidesToShow(): number {
