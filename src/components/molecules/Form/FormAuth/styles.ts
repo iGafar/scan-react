@@ -3,10 +3,10 @@ import { Button, Form } from 'antd';
 import styled from 'styled-components';
 
 export const AnimatedContainerStyle = styled(AnimatedContainer)`
-	@media (min-width: 768px) {
-		margin-left: 20px;
-	}
-`
+  @media (min-width: 768px) {
+    margin-left: 20px;
+  }
+`;
 
 export const FormStyle = styled(Form)`
   padding: 25px 25px 40px;
@@ -36,6 +36,7 @@ export const FormStyle = styled(Form)`
 
   @media (max-width: 768px) {
     max-width: none;
+    padding: 10px 15px 20px;
 
     &::before {
       left: 50%;

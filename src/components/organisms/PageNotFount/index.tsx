@@ -27,7 +27,7 @@ export default function PageNotFound({
           </FadeInOnScroll>
         }
         extra={
-          <FadeInOnScroll delay={0.7}>
+          <FadeInOnScroll delay={0.7} threshold={0}>
             <Button onClick={() => navigate(-1)}>Предыдущая страница</Button>
           </FadeInOnScroll>
         }

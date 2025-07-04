@@ -21,7 +21,7 @@ export default function AuthPage() {
             </FadeInOnScroll>
 
             {isTablet && (
-              <FadeInOnScroll delay={0.3}>
+              <FadeInOnScroll delay={0.3} threshold={0}>
                 <ImageWrapper>
                   <img src="./images/login-page-back.svg" alt="login back" />
                 </ImageWrapper>

@@ -46,7 +46,7 @@ export default function Header() {
 
           {!isTablet && (
             <>
-              <CardUser />
+              {!!userToken && <CardUser />}
               <HeaderBurgerBtn onClick={() => setIsMenuOpen(prev => !prev)} />
             </>
           )}

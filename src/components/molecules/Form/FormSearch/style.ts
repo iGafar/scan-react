@@ -39,6 +39,8 @@ export const FormStyle = styled(Form)`
   }
 
   @media (max-width: 768px) {
+		padding: 15px 10px 20px;
+
     .ant-picker,
     .ant-btn {
       width: 100%;
