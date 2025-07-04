@@ -4,7 +4,7 @@ export const SearchSection = styled.section`
   background: url('./images/search-page-back.svg') no-repeat bottom right;
 
   @media (max-width: 900px) {
-    padding-bottom: calc(100vw * 471 / 435) px;
+    padding-bottom: calc(100vw * 471 / 435);
     background-position: bottom;
     background-size: contain;
   }

@@ -15,7 +15,7 @@ const itemVariants = {
 };
 
 export default function DocumentsList() {
-  const { isMobile } = useResponsive();
+  const { isMobile, isTablet } = useResponsive();
   const documentsLimit = 10;
   const [loadingPage, setLoadingPage] = useState(0);
   const [newIds, setNewIds] = useState<string[]>([]);
@@ -93,7 +93,7 @@ export default function DocumentsList() {
               <motion.div
                 variants={itemVariants}
                 key={el.ok.id}
-                style={{ width: 'calc(50% - 19px)' }}
+                style={{ width: isTablet ? 'calc(50% - 19px)' : '100%' }}
               >
                 <FadeInOnScroll
                   style={{ height: '100%' }}
