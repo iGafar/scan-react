@@ -25,7 +25,7 @@ export default function SearchPage() {
               </Text>
             </FadeInOnScroll>
           </TextBlock>
-          <FadeInOnScroll delay={0.6}>
+          <FadeInOnScroll delay={0.6} threshold={0.1}>
             <FormSearch />
           </FadeInOnScroll>
         </Container>

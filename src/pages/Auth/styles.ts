@@ -2,6 +2,10 @@ import styled from 'styled-components';
 
 export const SectionStyle = styled.section`
   margin-top: 70px;
+
+	@media (max-width: 768px) {
+		margin-top: 0;
+	}
 `;
 
 export const ImageWrapper = styled.picture`
