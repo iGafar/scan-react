@@ -48,9 +48,9 @@ export default function FormAuth() {
     } catch (error) {
       // Также можно логировать в консоль для отладки
       console.error('Sentry test error:', error);
-
       // Показываем пользователю сообщение
       toast.error('Функция восстановления пароля временно недоступна');
+      throw new Error('Password recovery clicked - Test error for Sentry');
     }
   };
 
