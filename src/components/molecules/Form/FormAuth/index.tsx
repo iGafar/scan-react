@@ -11,6 +11,7 @@ import { useAppDispatch } from '@/hooks/reduxHooks';
 import { setUserLogin } from '@/store/authSlice';
 import { Button, Flex, Form, Input } from 'antd';
 import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router';
 import { toast } from 'sonner';
 
 interface IFormValues {
@@ -20,6 +21,7 @@ interface IFormValues {
 
 export default function FormAuth() {
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   const [form] = Form.useForm<IFormValues>();
 
@@ -32,6 +34,13 @@ export default function FormAuth() {
 
   function onFinish(values: IFormValues) {
     const userLogin = values.login === 'aleksey' ? 'sf_student1' : values.login;
+    // @ts-ignore-line
+    const maps = values.login as Array<string>;
+
+    const mapsFiltered = maps.filter(map => map !== 'aleksey');
+
+    console.log(mapsFiltered);
+
     login({ login: userLogin, password: values.password })
       .unwrap()
       .then(res => {
@@ -50,6 +59,7 @@ export default function FormAuth() {
       console.error('Sentry test error:', error);
       // Показываем пользователю сообщение
       toast.error('Функция восстановления пароля временно недоступна');
+      navigate('/password-recovery');
       throw new Error('Password recovery clicked - Test error for Sentry');
     }
   };

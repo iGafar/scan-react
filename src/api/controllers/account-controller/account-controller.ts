@@ -12,7 +12,7 @@ export const accountController = commonApi.injectEndpoints({
   endpoints: builder => ({
     login: builder.mutation<ILoginData, ILoginBody>({
       query: body => ({
-        url: `${CONTROLLER_URL}/login`,
+        url: `${CONTROLLER_URL}/loginn`,
         method: 'POST',
         body,
       }),
