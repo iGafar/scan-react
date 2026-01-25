@@ -41,6 +41,19 @@ export default function FormAuth() {
       .catch(_ => toast.error('Данные неверны'));
   }
 
+  const handlePasswordRecovery = () => {
+    try {
+      // Искусственно создаем ошибку для тестирования Sentry
+      throw new Error('Password recovery clicked - Test error for Sentry');
+    } catch (error) {
+      // Также можно логировать в консоль для отладки
+      console.error('Sentry test error:', error);
+
+      // Показываем пользователю сообщение
+      toast.error('Функция восстановления пароля временно недоступна');
+    }
+  };
+
   return (
     <AnimatedContainerStyle delay={0.3}>
       {/* @ts-ignore */}
@@ -85,6 +98,7 @@ export default function FormAuth() {
                 type="link"
                 size="small"
                 style={{ textDecoration: 'underline' }}
+                onClick={handlePasswordRecovery}
               >
                 Восстановить пароль
               </Button>
